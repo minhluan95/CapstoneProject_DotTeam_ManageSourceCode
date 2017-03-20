@@ -1,0 +1,96 @@
+﻿@model APMT_D.o.T_Team.Areas.User.Models.LoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login to A.P.M.T</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+    <link rel="stylesheet" href="~/Content/LoginPartial/css/style.css">
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="info">
+            <h1 style="font-size:50px;color:#990000">A.P.M.T</h1><span>Made by<i style="color:#990000;font-weight:bold"> D.o.T Team</i></span>
+        </div>
+    </div>
+    <div class="form">
+        <div class="thumbnail">
+            <img src="~/Content/Images/D.o.T_Logo_Ver1.2.png" />
+        </div>
+
+      
+        @Html.Partial("Forgot_password")
+        @Html.Partial("Register")
+        
+
+        @using (Html.BeginForm(new { @class = "login-form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+            @*<input name="txtEmail" type="email" placeholder="email" />*@
+            <fieldset>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Email, new { @placeholder = "email", @type = "email", @autofocus = "autofocus" })
+                </div>
+                @*<input name="txtPassword" type="password" placeholder="password" />*@
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Password, new { @placeholder = "password", @type = "password" })
+                </div>
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model => model.RememberMe)
+                        Remember Me
+                    </label>
+                </div>
+                <button type="submit">Login</button>
+                <p class="message">Not registered? <a id="create" style="font-weight:bold" href="#">Create an account</a></p>
+                <p class="message"><a id="forgot2" style="font-weight:bold" href="#">Forgot your Password?</a></p>
+            </fieldset>
+        }
+    </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script type="text/JavaScript">
+        $("#create").click(function () {
+            $("#register").hide();
+            $("#forgot").show();
+            $("#login").show();
+        });
+
+        $("#forgot2").click(function () {
+            $("#register").show();
+            $("#forgot").hide();
+            $("#login").show();
+        });
+        $("#signin2").click(function () {
+            $("#login").hide();
+            $("#forgot").show();
+            $("#register").show();
+        });
+        $("#signin3").click(function () {
+            $("#login").hide();
+            $("#forgot").show();
+            $("#register").show();
+        });
+        $("#create3").click(function () {
+            $("#login").show();
+            $("#forgot").show();
+            $("#register").hide();
+        });
+    </script>
+    <script src="~/Content/LoginPartial/js/index.js"></script>
+
+</body>
+</html>

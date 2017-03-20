@@ -1,0 +1,773 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E220210B-8761-4A30-85EA-9E0B5756D037}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>APMT_D.o.T_Team</RootNamespace>
+    <AssemblyName>APMT_D.o.T Team</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.1.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.1.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.1.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.1.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.1.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.2.3\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.3\lib\net45\WebMatrix.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.2.3\lib\net45\WebMatrix.WebData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Company\CompanyAreaRegistration.cs" />
+    <Compile Include="Areas\Company\Controllers\AdministratorManagementController.cs" />
+    <Compile Include="Areas\Company\Controllers\GeneralSettingController.cs" />
+    <Compile Include="Areas\Company\Controllers\MemberManagementController.cs" />
+    <Compile Include="Areas\Company\Controllers\ProcessManagementController.cs" />
+    <Compile Include="Areas\Company\Controllers\ProjectManagementController.cs" />
+    <Compile Include="Areas\Company\Controllers\InstanceManagementController.cs" />
+    <Compile Include="Areas\Company\Models\lstProcess_Running.cs" />
+    <Compile Include="Areas\System\Controllers\CompanyManagementController.cs" />
+    <Compile Include="Areas\System\Controllers\UserManagementController.cs" />
+    <Compile Include="Areas\System\Models\LoginModel.cs" />
+    <Compile Include="Areas\System\SystemAreaRegistration.cs" />
+    <Compile Include="Areas\User\Code\SessionHelper.cs" />
+    <Compile Include="Areas\User\Code\UserSession.cs" />
+    <Compile Include="Areas\User\Controllers\AuthenticationController.cs" />
+    <Compile Include="Areas\User\Models\LoginModel.cs" />
+    <Compile Include="Areas\User\UserAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\APMT_Activity.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Activity_Status.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Comment.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Company.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Company_Member.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Files.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Process.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_ProcessRoleUser_Detail.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Process_Role.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Project.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Running_Activity_Detail.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Running_OutputActivity_refer.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Running_OutputActivity_text.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Running_OutputActivity_upload.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Running_Process_Detail.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Running_Step_Detail.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Running_Step_Input.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Running_Step_Output.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Step.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Step_Input.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Step_Output.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Step_Role.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Step_To_Step.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Timeline.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Type_Output.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_Users.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APMT_User_Company.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Company_Role.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Boostrap Confirmation\bootstrap-confirmation.js" />
+    <Content Include="Content\Boostrap Confirmation\bootstrap-confirmation.min.js" />
+    <Content Include="Content\Boostrap Confirmation\Gruntfile.js" />
+    <Content Include="Content\client\images\assets\1.jpg" />
+    <Content Include="Content\client\images\assets\2.jpg" />
+    <Content Include="Content\client\images\assets\3.jpg" />
+    <Content Include="Content\client\images\assets\4.jpg" />
+    <Content Include="Content\client\images\assets\5.jpg" />
+    <Content Include="Content\client\images\assets\6.jpg" />
+    <Content Include="Content\client\images\assets\7.jpg" />
+    <Content Include="Content\client\images\assets\8.jpg" />
+    <Content Include="Content\client\images\assets\rect\1.jpg" />
+    <Content Include="Content\client\images\assets\rect\10.jpg" />
+    <Content Include="Content\client\images\assets\rect\2.jpg" />
+    <Content Include="Content\client\images\assets\rect\3.jpg" />
+    <Content Include="Content\client\images\assets\rect\4.jpg" />
+    <Content Include="Content\client\images\assets\rect\5.jpg" />
+    <Content Include="Content\client\images\assets\rect\6.jpg" />
+    <Content Include="Content\client\images\assets\rect\7.jpg" />
+    <Content Include="Content\client\images\assets\rect\8.jpg" />
+    <Content Include="Content\client\images\assets\rect\9.jpg" />
+    <Content Include="Content\client\images\bg_header.jpg" />
+    <Content Include="Content\client\scripts\application.js" />
+    <Content Include="Content\client\styles\docs.css" />
+    <Content Include="Content\css\AdminLTE.css" />
+    <Content Include="Content\css\AdminLTE.min.css" />
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\dataTables.bootstrap.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\ihover.css" />
+    <Content Include="Content\css\ihover.min.css" />
+    <Content Include="Content\css\libs\animate.css" />
+    <Content Include="Content\css\registercompany.css" />
+    <Content Include="Content\css\site.css" />
+    <Content Include="Content\css\_all-skins.css" />
+    <Content Include="Content\css\_all-skins.min.css" />
+    <Content Include="Content\dist\images\assets\1.jpg" />
+    <Content Include="Content\dist\images\assets\2.jpg" />
+    <Content Include="Content\dist\images\assets\3.jpg" />
+    <Content Include="Content\dist\images\assets\4.jpg" />
+    <Content Include="Content\dist\images\assets\5.jpg" />
+    <Content Include="Content\dist\images\assets\6.jpg" />
+    <Content Include="Content\dist\images\assets\7.jpg" />
+    <Content Include="Content\dist\images\assets\8.jpg" />
+    <Content Include="Content\dist\images\assets\rect\1.jpg" />
+    <Content Include="Content\dist\images\assets\rect\10.jpg" />
+    <Content Include="Content\dist\images\assets\rect\2.jpg" />
+    <Content Include="Content\dist\images\assets\rect\3.jpg" />
+    <Content Include="Content\dist\images\assets\rect\4.jpg" />
+    <Content Include="Content\dist\images\assets\rect\5.jpg" />
+    <Content Include="Content\dist\images\assets\rect\6.jpg" />
+    <Content Include="Content\dist\images\assets\rect\7.jpg" />
+    <Content Include="Content\dist\images\assets\rect\8.jpg" />
+    <Content Include="Content\dist\images\assets\rect\9.jpg" />
+    <Content Include="Content\dist\images\bg_header.jpg" />
+    <Content Include="Content\dist\index.html" />
+    <Content Include="Content\dist\scripts\app.js" />
+    <Content Include="Content\dist\scripts\wow.js" />
+    <Content Include="Content\dist\scripts\wow.min.js" />
+    <Content Include="Content\dist\styles\main.css" />
+    <Content Include="Content\dist\wow.js" />
+    <Content Include="Content\dist\wow.min.js" />
+    <Content Include="Content\Images\Avatar_ProductAD.jpg" />
+    <Content Include="Content\Images\D.o.T_Logo_Ver1.2.png" />
+    <Content Include="Content\LoginPartial\css\style.css" />
+    <Content Include="Content\LoginPartial\images\processmanagement.jpg" />
+    <Content Include="Content\LoginPartial\js\bootstrap-datetimepicker.js" />
+    <Content Include="Content\LoginPartial\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\LoginPartial\js\datetimepicker%29.js" />
+    <Content Include="Content\LoginPartial\js\index.js" />
+    <Content Include="Content\preview\preview.png" />
+    <Content Include="Content\preview\thumb.png" />
+    <Content Include="Content\spec\javascripts\fixtures\custom.html" />
+    <Content Include="Content\spec\javascripts\fixtures\simple.html" />
+    <Content Include="Content\spec\javascripts\helpers\SpecHelper.js" />
+    <Content Include="Content\spec\javascripts\libs\jasmine-jquery.js" />
+    <Content Include="Content\spec\javascripts\libs\jquery.js" />
+    <Content Include="Content\spec\javascripts\wow-spec.js" />
+    <Content Include="Content\src\ihover.css" />
+    <Content Include="Content\src\ihover.min.css" />
+    <Content Include="Content\Titatoogle\dist\titatoggle-dist.css" />
+    <Content Include="Content\Titatoogle\GNU-General-Public-License-v2.0.txt" />
+    <Content Include="Content\Titatoogle\Gulpfile.js" />
+    <Content Include="Content\Titatoogle\index.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\agency.min.css" />
+    <Content Include="Content\css\font.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\square\aero%402x.png" />
+    <Content Include="Content\square\aero.css" />
+    <Content Include="Content\square\aero.png" />
+    <Content Include="Content\square\blue%402x.png" />
+    <Content Include="Content\square\blue.css" />
+    <Content Include="Content\square\blue.png" />
+    <Content Include="Content\square\green%402x.png" />
+    <Content Include="Content\square\green.css" />
+    <Content Include="Content\square\green.png" />
+    <Content Include="Content\square\grey%402x.png" />
+    <Content Include="Content\square\grey.css" />
+    <Content Include="Content\square\grey.png" />
+    <Content Include="Content\square\orange%402x.png" />
+    <Content Include="Content\square\orange.css" />
+    <Content Include="Content\square\orange.png" />
+    <Content Include="Content\square\pink%402x.png" />
+    <Content Include="Content\square\pink.css" />
+    <Content Include="Content\square\pink.png" />
+    <Content Include="Content\square\purple%402x.png" />
+    <Content Include="Content\square\purple.css" />
+    <Content Include="Content\square\purple.png" />
+    <Content Include="Content\square\red%402x.png" />
+    <Content Include="Content\square\red.css" />
+    <Content Include="Content\square\red.png" />
+    <Content Include="Content\square\square%402x.png" />
+    <Content Include="Content\square\square.css" />
+    <Content Include="Content\square\square.png" />
+    <Content Include="Content\square\yellow%402x.png" />
+    <Content Include="Content\square\yellow.css" />
+    <Content Include="Content\square\yellow.png" />
+    <Content Include="Content\square\_all.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\Admin\user\0.png" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\header-bg.jpg" />
+    <Content Include="Models\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\agency.js" />
+    <Content Include="Scripts\agency.min.js" />
+    <Content Include="Scripts\app.min.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\contact_me.js" />
+    <Content Include="Scripts\dashboard2.js" />
+    <Content Include="Scripts\icheck.min.js" />
+    <Content Include="Scripts\jqBootstrapValidation.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\User\Views\Shared\" />
+    <Folder Include="Common\" />
+    <Folder Include="Content\fonts\" />
+    <Folder Include="Content\Images\Members\" />
+    <Folder Include="Content\less\" />
+    <Folder Include="Content\LoginPartial\sass\" />
+    <Folder Include="Content\scss\" />
+    <Folder Include="Content\Titatoogle\docs\" />
+    <Folder Include="Content\Titatoogle\less\" />
+    <Folder Include="Content\Titatoogle\_includes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\client\scripts\main.coffee" />
+    <Content Include="Content\client\styles\bourbon\addons\_button.scss" />
+    <Content Include="Content\client\styles\bourbon\addons\_clearfix.scss" />
+    <Content Include="Content\client\styles\bourbon\addons\_font-family.scss" />
+    <Content Include="Content\client\styles\bourbon\addons\_hide-text.scss" />
+    <Content Include="Content\client\styles\bourbon\addons\_html5-input-types.scss" />
+    <Content Include="Content\client\styles\bourbon\addons\_position.scss" />
+    <Content Include="Content\client\styles\bourbon\addons\_prefixer.scss" />
+    <Content Include="Content\client\styles\bourbon\addons\_retina-image.scss" />
+    <Content Include="Content\client\styles\bourbon\addons\_size.scss" />
+    <Content Include="Content\client\styles\bourbon\addons\_timing-functions.scss" />
+    <Content Include="Content\client\styles\bourbon\addons\_triangle.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_animation.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_appearance.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_backface-visibility.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_background-image.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_background.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_border-image.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_border-radius.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_box-sizing.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_columns.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_flex-box.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_font-face.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_hidpi-media-query.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_image-rendering.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_inline-block.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_keyframes.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_linear-gradient.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_perspective.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_placeholder.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_radial-gradient.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_transform.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_transition.scss" />
+    <Content Include="Content\client\styles\bourbon\css3\_user-select.scss" />
+    <Content Include="Content\client\styles\bourbon\functions\_compact.scss" />
+    <Content Include="Content\client\styles\bourbon\functions\_flex-grid.scss" />
+    <Content Include="Content\client\styles\bourbon\functions\_grid-width.scss" />
+    <Content Include="Content\client\styles\bourbon\functions\_linear-gradient.scss" />
+    <Content Include="Content\client\styles\bourbon\functions\_modular-scale.scss" />
+    <Content Include="Content\client\styles\bourbon\functions\_px-to-em.scss" />
+    <Content Include="Content\client\styles\bourbon\functions\_radial-gradient.scss" />
+    <Content Include="Content\client\styles\bourbon\functions\_tint-shade.scss" />
+    <Content Include="Content\client\styles\bourbon\functions\_transition-property-name.scss" />
+    <Content Include="Content\client\styles\bourbon\helpers\_deprecated-webkit-gradient.scss" />
+    <Content Include="Content\client\styles\bourbon\helpers\_gradient-positions-parser.scss" />
+    <Content Include="Content\client\styles\bourbon\helpers\_linear-positions-parser.scss" />
+    <Content Include="Content\client\styles\bourbon\helpers\_radial-arg-parser.scss" />
+    <Content Include="Content\client\styles\bourbon\helpers\_radial-positions-parser.scss" />
+    <Content Include="Content\client\styles\bourbon\helpers\_render-gradients.scss" />
+    <Content Include="Content\client\styles\bourbon\helpers\_shape-size-stripper.scss" />
+    <Content Include="Content\client\styles\bourbon\_bourbon-deprecated-upcoming.scss" />
+    <Content Include="Content\client\styles\bourbon\_bourbon.scss" />
+    <Content Include="Content\client\styles\circle\_effect1.scss" />
+    <Content Include="Content\client\styles\circle\_effect10.scss" />
+    <Content Include="Content\client\styles\circle\_effect11.scss" />
+    <Content Include="Content\client\styles\circle\_effect12.scss" />
+    <Content Include="Content\client\styles\circle\_effect13.scss" />
+    <Content Include="Content\client\styles\circle\_effect14.scss" />
+    <Content Include="Content\client\styles\circle\_effect15.scss" />
+    <Content Include="Content\client\styles\circle\_effect16.scss" />
+    <Content Include="Content\client\styles\circle\_effect17.scss" />
+    <Content Include="Content\client\styles\circle\_effect18.scss" />
+    <Content Include="Content\client\styles\circle\_effect19.scss" />
+    <Content Include="Content\client\styles\circle\_effect2.scss" />
+    <Content Include="Content\client\styles\circle\_effect20.scss" />
+    <Content Include="Content\client\styles\circle\_effect3.scss" />
+    <Content Include="Content\client\styles\circle\_effect4.scss" />
+    <Content Include="Content\client\styles\circle\_effect5.scss" />
+    <Content Include="Content\client\styles\circle\_effect6.scss" />
+    <Content Include="Content\client\styles\circle\_effect7.scss" />
+    <Content Include="Content\client\styles\circle\_effect8.scss" />
+    <Content Include="Content\client\styles\circle\_effect9.scss" />
+    <Content Include="Content\client\styles\docs-overrides.scss" />
+    <Content Include="Content\client\styles\ihover.scss" />
+    <Content Include="Content\client\styles\shared\_default-styles.scss" />
+    <Content Include="Content\client\styles\shared\_variables.scss" />
+    <Content Include="Content\client\styles\square\_effect1.scss" />
+    <Content Include="Content\client\styles\square\_effect10.scss" />
+    <Content Include="Content\client\styles\square\_effect11.scss" />
+    <Content Include="Content\client\styles\square\_effect12.scss" />
+    <Content Include="Content\client\styles\square\_effect13.scss" />
+    <Content Include="Content\client\styles\square\_effect14.scss" />
+    <Content Include="Content\client\styles\square\_effect15.scss" />
+    <Content Include="Content\client\styles\square\_effect2.scss" />
+    <Content Include="Content\client\styles\square\_effect3.scss" />
+    <Content Include="Content\client\styles\square\_effect4.scss" />
+    <Content Include="Content\client\styles\square\_effect5.scss" />
+    <Content Include="Content\client\styles\square\_effect6.scss" />
+    <Content Include="Content\client\styles\square\_effect7.scss" />
+    <Content Include="Content\client\styles\square\_effect8.scss" />
+    <Content Include="Content\client\styles\square\_effect9.scss" />
+    <Content Include="Content\client\templates\index.jade" />
+    <Content Include="Content\client\templates\layout.jade" />
+    <Content Include="Content\spec\coffeescripts\helpers\SpecHelper.coffee" />
+    <Content Include="Content\spec\coffeescripts\wow-spec.coffee" />
+    <Content Include="Content\src\wow.coffee" />
+    <Content Include="Areas\System\Views\web.config" />
+    <Content Include="Areas\System\Views\Shared\_SystemLayoutPage.cshtml" />
+    <Content Include="Areas\System\Views\Shared\Partial\_System_HeaderPartial.cshtml" />
+    <Content Include="Areas\System\Views\Shared\Partial\_System_MenuPartial.cshtml" />
+    <Content Include="Areas\Company\Views\Shared\Partial\_Client_ConfigPartial.cshtml" />
+    <Content Include="Areas\System\Views\CompanyManagement\View_List.cshtml" />
+    <Content Include="Areas\System\Views\UserManagement\View_List.cshtml" />
+    <Content Include="Areas\System\Views\UserManagement\Update_Profile.cshtml" />
+    <Content Include="Areas\Company\Views\web.config" />
+    <Content Include="Areas\Company\Views\MemberManagement\View_List.cshtml" />
+    <Content Include="Areas\Company\Views\ProjectManagement\View_List.cshtml" />
+    <Content Include="Areas\Company\Views\ProjectManagement\AddMember.cshtml" />
+    <Content Include="Areas\Company\Views\ProcessManagement\ListProcess.cshtml" />
+    <Content Include="Areas\Company\Views\InstanceManagement\ListStep.cshtml" />
+    <Content Include="Areas\Company\Views\InstanceManagement\ListActivity.cshtml" />
+    <Content Include="Areas\Company\Views\InstanceManagement\RunActivity.cshtml" />
+    <Content Include="Areas\Company\Views\InstanceManagement\MB_UploadGUI.cshtml" />
+    <Content Include="Areas\Company\Views\InstanceManagement\MB_ContentGUI.cshtml" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\System\Views\ProductAdministratorManagement\View_List.cshtml" />
+    <Content Include="Areas\Company\Views\GeneralSetting\Update_Company_Information.cshtml" />
+    <Content Include="Areas\Company\Views\ProcessManagement\AddMember.cshtml" />
+    <Content Include="Content\Boostrap Confirmation\.editorconfig" />
+    <Content Include="Content\Boostrap Confirmation\.gitignore" />
+    <Content Include="Content\Boostrap Confirmation\bower.json" />
+    <Content Include="Content\Boostrap Confirmation\package.json" />
+    <Content Include="Content\Boostrap Confirmation\README.md" />
+    <Content Include="Content\Titatoogle\.gitignore" />
+    <Content Include="Content\Titatoogle\bower.json" />
+    <Content Include="Content\Titatoogle\package.json" />
+    <Content Include="Content\Titatoogle\README.md" />
+    <Content Include="Areas\Company\Views\InstanceManagement\RunningActivityDetail_PM.cshtml" />
+    <Content Include="Areas\User\Views\web.config" />
+    <Content Include="Areas\User\Views\Authentication\Log_In.cshtml" />
+    <Content Include="Areas\Company\Views\GeneralSetting\AboutYourTeam4.cshtml" />
+    <Content Include="Areas\Company\Views\GeneralSetting\CompanyCalled5.cshtml" />
+    <Content Include="Areas\Company\Views\GeneralSetting\CheckEmail1.cshtml" />
+    <Content Include="Areas\Company\Views\GeneralSetting\Invitation7.cshtml" />
+    <Content Include="Areas\Company\Views\GeneralSetting\SetYourPassword3.cshtml" />
+    <Content Include="Areas\Company\Views\GeneralSetting\WebDomain6.cshtml" />
+    <Content Include="Areas\Company\Views\GeneralSetting\YourName2.cshtml" />
+    <Content Include="Areas\User\Views\Authentication\Register.cshtml" />
+    <Content Include="Areas\User\Views\Authentication\Forgot_Password.cshtml" />
+    <Content Include="Areas\System\Views\UserManagement\View_Details.cshtml" />
+    <Content Include="Areas\System\Views\ProductAdministratorManagement\Add_New.cshtml" />
+    <Content Include="Areas\Company\Views\AdministratorManagement\View_List.cshtml" />
+    <Content Include="Areas\Company\Views\AdministratorManagement\Add_New.cshtml" />
+    <Content Include="Areas\Company\Views\MemberManagement\Add_New.cshtml" />
+    <Content Include="Areas\Company\Views\ProjectManagement\Add_New.cshtml" />
+    <Content Include="Areas\User\Views\Authentication\View_Details.cshtml" />
+    <Content Include="Areas\Company\Views\Shared\Partial\_Client_MenuPartial.cshtml" />
+    <Content Include="Areas\System\Views\Shared\Partial\_System_ConfigPartial.cshtml" />
+    <Content Include="Areas\Company\Views\Shared\Partial\_Client_HeaderPartial.cshtml" />
+    <Content Include="Areas\Company\Views\Shared\_ClientLayoutPage.cshtml" />
+    <Content Include="Areas\Company\Views\Shared\_RegisterClientLayout.cshtml" />
+    <Content Include="Areas\Company\Views\InstanceManagement\Index.cshtml" />
+    <Content Include="Areas\Company\Views\InstanceManagement\Index2.cshtml" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Views\Home\Signin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{b4288b76-f0ed-4edb-967f-eae5c9f3a81b}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1220</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1220/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

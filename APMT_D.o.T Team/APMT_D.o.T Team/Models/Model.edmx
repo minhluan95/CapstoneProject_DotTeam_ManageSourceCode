@@ -1,0 +1,2292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DoT_APMT_DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="APMT_Activity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="descriptions" Type="nvarchar(max)" />
+          <Property Name="step_id" Type="int" Nullable="false" />
+          <Property Name="weights" Type="int" Nullable="false" />
+          <Property Name="predecessor" Type="int" Nullable="false" />
+          <Property Name="type_output_id" Type="int" Nullable="false" />
+          <Property Name="process_id" Type="int" />
+          <Property Name="files_id" Type="int" />
+          <Property Name="title" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="APMT_Activity_Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="code" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Running_Activity_Detail_id" Type="int" Nullable="false" />
+          <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="company_admin_email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Company_Member">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="users_id" Type="int" Nullable="false" />
+          <Property Name="company_id" Type="int" Nullable="false" />
+          <Property Name="Company_Role_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Files">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="isdeliverable" Type="bit" Nullable="false" />
+          <Property Name="process_id" Type="int" Nullable="false" />
+          <Property Name="descriptions" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="APMT_Process">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="XMLContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Descriptions" Type="nvarchar(max)" />
+          <Property Name="Creator_id" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Process_Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="process_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_ProcessRoleUser_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="process_role_id" Type="int" Nullable="false" />
+          <Property Name="users_id" Type="int" Nullable="false" />
+          <Property Name="running_process_detail_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Project">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Descriptions" Type="nvarchar(max)" />
+          <Property Name="manager_id" Type="int" Nullable="false" />
+          <Property Name="company_id" Type="int" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Running_Activity_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Activity_id" Type="int" Nullable="false" />
+          <Property Name="Member_id" Type="int" Nullable="false" />
+          <Property Name="Running_Step_Detail_id" Type="int" Nullable="false" />
+          <Property Name="Activity_Status_id" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="date" Nullable="false" />
+          <Property Name="EndTime" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Running_OutputActivity_refer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Activity_output_Refer_id" Type="int" Nullable="false" />
+          <Property Name="process_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Running_OutputActivity_text">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Timestamps" Type="date" Nullable="false" />
+          <Property Name="contents" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="running_activity_detail_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Running_OutputActivity_upload">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Versions" Type="varchar" MaxLength="200" />
+          <Property Name="URL" Type="nvarchar" MaxLength="200" />
+          <Property Name="Timestamps" Type="date" Nullable="false" />
+          <Property Name="Files_id" Type="int" Nullable="false" />
+          <Property Name="running_activity_detail_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Running_Process_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="process_id" Type="int" Nullable="false" />
+          <Property Name="leader_id" Type="int" Nullable="false" />
+          <Property Name="targetdate" Type="date" Nullable="false" />
+          <Property Name="project_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Running_Step_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TargetDate" Type="date" Nullable="false" />
+          <Property Name="step_id" Type="int" Nullable="false" />
+          <Property Name="Running_Process_Detail_id" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="date" Nullable="false" />
+          <Property Name="EndTime" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Running_Step_Input">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Versions" Type="varchar" MaxLength="200" />
+          <Property Name="URL" Type="nvarchar" MaxLength="200" />
+          <Property Name="Timestamps" Type="date" Nullable="false" />
+          <Property Name="Files_id" Type="int" Nullable="false" />
+          <Property Name="running_step_detail_id" Type="int" Nullable="false" />
+          <Property Name="Step_Input_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Running_Step_Output">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Versions" Type="varchar" MaxLength="200" />
+          <Property Name="URL" Type="nvarchar" MaxLength="200" />
+          <Property Name="Timestamps" Type="date" Nullable="false" />
+          <Property Name="Files_id" Type="int" Nullable="false" />
+          <Property Name="running_step_detail_id" Type="int" Nullable="false" />
+          <Property Name="Step_Output_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Step">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="descriptions" Type="nvarchar(max)" />
+          <Property Name="process_id" Type="int" Nullable="false" />
+          <Property Name="weights" Type="int" Nullable="false" />
+          <Property Name="typess" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Step_Input">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Files_id" Type="int" Nullable="false" />
+          <Property Name="Step_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Step_Output">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Files_id" Type="int" Nullable="false" />
+          <Property Name="Step_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Step_Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="step_id" Type="int" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Step_To_Step">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fromStep_id" Type="int" Nullable="false" />
+          <Property Name="toStep_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Timeline">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Running_Process_Detail_id" Type="int" Nullable="false" />
+          <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Type_Output">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="code" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_User_Company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="users_id" Type="int" Nullable="false" />
+          <Property Name="company_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APMT_Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Passwords" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Statuss" Type="nvarchar" MaxLength="200" />
+          <Property Name="IDRole" Type="int" />
+        </EntityType>
+        <EntityType Name="Company_Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Activity_Files">
+          <End Role="APMT_Files" Type="Self.APMT_Files" Multiplicity="0..1" />
+          <End Role="APMT_Activity" Type="Self.APMT_Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Activity">
+              <PropertyRef Name="files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_Step">
+          <End Role="APMT_Step" Type="Self.APMT_Step" Multiplicity="1" />
+          <End Role="APMT_Activity" Type="Self.APMT_Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Activity">
+              <PropertyRef Name="step_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_Type_Output">
+          <End Role="APMT_Type_Output" Type="Self.APMT_Type_Output" Multiplicity="1" />
+          <End Role="APMT_Activity" Type="Self.APMT_Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Type_Output">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Activity">
+              <PropertyRef Name="type_output_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_APMT_Process_APMT_Users">
+          <End Role="APMT_Users" Type="Self.APMT_Users" Multiplicity="1" />
+          <End Role="APMT_Process" Type="Self.APMT_Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Process">
+              <PropertyRef Name="Creator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_APMT_Running_Process_Detail_APMT_Project">
+          <End Role="APMT_Project" Type="Self.APMT_Project" Multiplicity="1" />
+          <End Role="APMT_Running_Process_Detail" Type="Self.APMT_Running_Process_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Project">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Process_Detail">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_APMT_Running_Process_Detail_APMT_Users">
+          <End Role="APMT_Users" Type="Self.APMT_Users" Multiplicity="1" />
+          <End Role="APMT_Running_Process_Detail" Type="Self.APMT_Running_Process_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Process_Detail">
+              <PropertyRef Name="leader_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_APMT_Users_Company_Role">
+          <End Role="Company_Role" Type="Self.Company_Role" Multiplicity="0..1" />
+          <End Role="APMT_Users" Type="Self.APMT_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company_Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Users">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Running_Activity_Detail">
+          <End Role="APMT_Running_Activity_Detail" Type="Self.APMT_Running_Activity_Detail" Multiplicity="1" />
+          <End Role="APMT_Comment" Type="Self.APMT_Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Comment">
+              <PropertyRef Name="Running_Activity_Detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Admin_Company">
+          <End Role="APMT_Company" Type="Self.APMT_Company" Multiplicity="1" />
+          <End Role="APMT_Company_Member" Type="Self.APMT_Company_Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Company_Member">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Admin_Users">
+          <End Role="APMT_Users" Type="Self.APMT_Users" Multiplicity="1" />
+          <End Role="APMT_Company_Member" Type="Self.APMT_Company_Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Company_Member">
+              <PropertyRef Name="users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Files_Process">
+          <End Role="APMT_Process" Type="Self.APMT_Process" Multiplicity="1" />
+          <End Role="APMT_Files" Type="Self.APMT_Files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Process">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Files">
+              <PropertyRef Name="process_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessRoleUser_Detail_Process_Role">
+          <End Role="APMT_Process_Role" Type="Self.APMT_Process_Role" Multiplicity="1" />
+          <End Role="APMT_ProcessRoleUser_Detail" Type="Self.APMT_ProcessRoleUser_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Process_Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_ProcessRoleUser_Detail">
+              <PropertyRef Name="process_role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessRoleUser_Detail_Users">
+          <End Role="APMT_Users" Type="Self.APMT_Users" Multiplicity="1" />
+          <End Role="APMT_ProcessRoleUser_Detail" Type="Self.APMT_ProcessRoleUser_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_ProcessRoleUser_Detail">
+              <PropertyRef Name="users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Company">
+          <End Role="APMT_Company" Type="Self.APMT_Company" Multiplicity="1" />
+          <End Role="APMT_Project" Type="Self.APMT_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Project">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Users">
+          <End Role="APMT_Users" Type="Self.APMT_Users" Multiplicity="1" />
+          <End Role="APMT_Project" Type="Self.APMT_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Project">
+              <PropertyRef Name="manager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Activity_Detail_Activity">
+          <End Role="APMT_Activity" Type="Self.APMT_Activity" Multiplicity="1" />
+          <End Role="APMT_Running_Activity_Detail" Type="Self.APMT_Running_Activity_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Activity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="Activity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Activity_Detail_Activity_Status">
+          <End Role="APMT_Activity_Status" Type="Self.APMT_Activity_Status" Multiplicity="1" />
+          <End Role="APMT_Running_Activity_Detail" Type="Self.APMT_Running_Activity_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Activity_Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="Activity_Status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Activity_Detail_Users">
+          <End Role="APMT_Users" Type="Self.APMT_Users" Multiplicity="1" />
+          <End Role="APMT_Running_Activity_Detail" Type="Self.APMT_Running_Activity_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="Member_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_OutputActivity_refer_Activity">
+          <End Role="APMT_Activity" Type="Self.APMT_Activity" Multiplicity="1" />
+          <End Role="APMT_Running_OutputActivity_refer" Type="Self.APMT_Running_OutputActivity_refer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Activity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_OutputActivity_refer">
+              <PropertyRef Name="Activity_output_Refer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_OutputActivity_text_Running_Activity_Detail">
+          <End Role="APMT_Running_Activity_Detail" Type="Self.APMT_Running_Activity_Detail" Multiplicity="1" />
+          <End Role="APMT_Running_OutputActivity_text" Type="Self.APMT_Running_OutputActivity_text" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_OutputActivity_text">
+              <PropertyRef Name="running_activity_detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_OutputActivity_upload_Files">
+          <End Role="APMT_Files" Type="Self.APMT_Files" Multiplicity="1" />
+          <End Role="APMT_Running_OutputActivity_upload" Type="Self.APMT_Running_OutputActivity_upload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_OutputActivity_upload">
+              <PropertyRef Name="Files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_OutputActivity_upload_Running_Activity_Detail">
+          <End Role="APMT_Running_Activity_Detail" Type="Self.APMT_Running_Activity_Detail" Multiplicity="1" />
+          <End Role="APMT_Running_OutputActivity_upload" Type="Self.APMT_Running_OutputActivity_upload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_OutputActivity_upload">
+              <PropertyRef Name="running_activity_detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Input_Files">
+          <End Role="APMT_Files" Type="Self.APMT_Files" Multiplicity="1" />
+          <End Role="APMT_Running_Step_Input" Type="Self.APMT_Running_Step_Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Input">
+              <PropertyRef Name="Files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Input_Running_Step_Detail">
+          <End Role="APMT_Running_Step_Detail" Type="Self.APMT_Running_Step_Detail" Multiplicity="1" />
+          <End Role="APMT_Running_Step_Input" Type="Self.APMT_Running_Step_Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Step_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Input">
+              <PropertyRef Name="running_step_detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Input_Step_Input">
+          <End Role="APMT_Step_Input" Type="Self.APMT_Step_Input" Multiplicity="1" />
+          <End Role="APMT_Running_Step_Input" Type="Self.APMT_Running_Step_Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step_Input">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Input">
+              <PropertyRef Name="Step_Input_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Output_Files">
+          <End Role="APMT_Files" Type="Self.APMT_Files" Multiplicity="1" />
+          <End Role="APMT_Running_Step_Output" Type="Self.APMT_Running_Step_Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Output">
+              <PropertyRef Name="Files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Output_Running_Step_Detail">
+          <End Role="APMT_Running_Step_Detail" Type="Self.APMT_Running_Step_Detail" Multiplicity="1" />
+          <End Role="APMT_Running_Step_Output" Type="Self.APMT_Running_Step_Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Step_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Output">
+              <PropertyRef Name="running_step_detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Output_Step_Output">
+          <End Role="APMT_Step_Output" Type="Self.APMT_Step_Output" Multiplicity="1" />
+          <End Role="APMT_Running_Step_Output" Type="Self.APMT_Running_Step_Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step_Output">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Output">
+              <PropertyRef Name="Step_Output_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Input_Files">
+          <End Role="APMT_Files" Type="Self.APMT_Files" Multiplicity="1" />
+          <End Role="APMT_Step_Input" Type="Self.APMT_Step_Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Input">
+              <PropertyRef Name="Files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Input_Step">
+          <End Role="APMT_Step" Type="Self.APMT_Step" Multiplicity="1" />
+          <End Role="APMT_Step_Input" Type="Self.APMT_Step_Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Input">
+              <PropertyRef Name="Step_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Output_Files">
+          <End Role="APMT_Files" Type="Self.APMT_Files" Multiplicity="1" />
+          <End Role="APMT_Step_Output" Type="Self.APMT_Step_Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Output">
+              <PropertyRef Name="Files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Output_Step">
+          <End Role="APMT_Step" Type="Self.APMT_Step" Multiplicity="1" />
+          <End Role="APMT_Step_Output" Type="Self.APMT_Step_Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Output">
+              <PropertyRef Name="Step_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Process">
+          <End Role="APMT_Process" Type="Self.APMT_Process" Multiplicity="1" />
+          <End Role="APMT_Step" Type="Self.APMT_Step" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Process">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step">
+              <PropertyRef Name="process_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Role_Process_Role">
+          <End Role="APMT_Process_Role" Type="Self.APMT_Process_Role" Multiplicity="1" />
+          <End Role="APMT_Step_Role" Type="Self.APMT_Step_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Process_Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Role">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Role_Step">
+          <End Role="APMT_Step" Type="Self.APMT_Step" Multiplicity="1" />
+          <End Role="APMT_Step_Role" Type="Self.APMT_Step_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Role">
+              <PropertyRef Name="step_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_To_Step_Step">
+          <End Role="APMT_Step" Type="Self.APMT_Step" Multiplicity="1" />
+          <End Role="APMT_Step_To_Step" Type="Self.APMT_Step_To_Step" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_To_Step">
+              <PropertyRef Name="fromStep_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_To_Step_Step1">
+          <End Role="APMT_Step" Type="Self.APMT_Step" Multiplicity="1" />
+          <End Role="APMT_Step_To_Step" Type="Self.APMT_Step_To_Step" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_To_Step">
+              <PropertyRef Name="toStep_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timeline_Running_Process_Detail">
+          <End Role="APMT_Running_Process_Detail" Type="Self.APMT_Running_Process_Detail" Multiplicity="1" />
+          <End Role="APMT_Timeline" Type="Self.APMT_Timeline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Process_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Timeline">
+              <PropertyRef Name="Running_Process_Detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Company_Company">
+          <End Role="APMT_Company" Type="Self.APMT_Company" Multiplicity="1" />
+          <End Role="APMT_User_Company" Type="Self.APMT_User_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_User_Company">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DoT_APMT_DatabaseModelStoreContainer">
+          <EntitySet Name="APMT_Activity" EntityType="Self.APMT_Activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Activity_Status" EntityType="Self.APMT_Activity_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Comment" EntityType="Self.APMT_Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Company" EntityType="Self.APMT_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Company_Member" EntityType="Self.APMT_Company_Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Files" EntityType="Self.APMT_Files" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Process" EntityType="Self.APMT_Process" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Process_Role" EntityType="Self.APMT_Process_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_ProcessRoleUser_Detail" EntityType="Self.APMT_ProcessRoleUser_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Project" EntityType="Self.APMT_Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Running_Activity_Detail" EntityType="Self.APMT_Running_Activity_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Running_OutputActivity_refer" EntityType="Self.APMT_Running_OutputActivity_refer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Running_OutputActivity_text" EntityType="Self.APMT_Running_OutputActivity_text" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Running_OutputActivity_upload" EntityType="Self.APMT_Running_OutputActivity_upload" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Running_Process_Detail" EntityType="Self.APMT_Running_Process_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Running_Step_Detail" EntityType="Self.APMT_Running_Step_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Running_Step_Input" EntityType="Self.APMT_Running_Step_Input" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Running_Step_Output" EntityType="Self.APMT_Running_Step_Output" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Step" EntityType="Self.APMT_Step" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Step_Input" EntityType="Self.APMT_Step_Input" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Step_Output" EntityType="Self.APMT_Step_Output" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Step_Role" EntityType="Self.APMT_Step_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Step_To_Step" EntityType="Self.APMT_Step_To_Step" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Timeline" EntityType="Self.APMT_Timeline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Type_Output" EntityType="Self.APMT_Type_Output" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_User_Company" EntityType="Self.APMT_User_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APMT_Users" EntityType="Self.APMT_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company_Role" EntityType="Self.Company_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Activity_Files" Association="Self.FK_Activity_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Activity" EntitySet="APMT_Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_Step" Association="Self.FK_Activity_Step">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Activity" EntitySet="APMT_Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_Type_Output" Association="Self.FK_Activity_Type_Output">
+            <End Role="APMT_Type_Output" EntitySet="APMT_Type_Output" />
+            <End Role="APMT_Activity" EntitySet="APMT_Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_APMT_Process_APMT_Users" Association="Self.FK_APMT_Process_APMT_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_Process" EntitySet="APMT_Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_APMT_Running_Process_Detail_APMT_Project" Association="Self.FK_APMT_Running_Process_Detail_APMT_Project">
+            <End Role="APMT_Project" EntitySet="APMT_Project" />
+            <End Role="APMT_Running_Process_Detail" EntitySet="APMT_Running_Process_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_APMT_Running_Process_Detail_APMT_Users" Association="Self.FK_APMT_Running_Process_Detail_APMT_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_Running_Process_Detail" EntitySet="APMT_Running_Process_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_APMT_Users_Company_Role" Association="Self.FK_APMT_Users_Company_Role">
+            <End Role="Company_Role" EntitySet="Company_Role" />
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Running_Activity_Detail" Association="Self.FK_Comment_Running_Activity_Detail">
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+            <End Role="APMT_Comment" EntitySet="APMT_Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Admin_Company" Association="Self.FK_Company_Admin_Company">
+            <End Role="APMT_Company" EntitySet="APMT_Company" />
+            <End Role="APMT_Company_Member" EntitySet="APMT_Company_Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Admin_Users" Association="Self.FK_Company_Admin_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_Company_Member" EntitySet="APMT_Company_Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Files_Process" Association="Self.FK_Files_Process">
+            <End Role="APMT_Process" EntitySet="APMT_Process" />
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessRoleUser_Detail_Process_Role" Association="Self.FK_ProcessRoleUser_Detail_Process_Role">
+            <End Role="APMT_Process_Role" EntitySet="APMT_Process_Role" />
+            <End Role="APMT_ProcessRoleUser_Detail" EntitySet="APMT_ProcessRoleUser_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessRoleUser_Detail_Users" Association="Self.FK_ProcessRoleUser_Detail_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_ProcessRoleUser_Detail" EntitySet="APMT_ProcessRoleUser_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Company" Association="Self.FK_Project_Company">
+            <End Role="APMT_Company" EntitySet="APMT_Company" />
+            <End Role="APMT_Project" EntitySet="APMT_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Users" Association="Self.FK_Project_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_Project" EntitySet="APMT_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Activity_Detail_Activity" Association="Self.FK_Running_Activity_Detail_Activity">
+            <End Role="APMT_Activity" EntitySet="APMT_Activity" />
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Activity_Detail_Activity_Status" Association="Self.FK_Running_Activity_Detail_Activity_Status">
+            <End Role="APMT_Activity_Status" EntitySet="APMT_Activity_Status" />
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Activity_Detail_Users" Association="Self.FK_Running_Activity_Detail_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_OutputActivity_refer_Activity" Association="Self.FK_Running_OutputActivity_refer_Activity">
+            <End Role="APMT_Activity" EntitySet="APMT_Activity" />
+            <End Role="APMT_Running_OutputActivity_refer" EntitySet="APMT_Running_OutputActivity_refer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_OutputActivity_text_Running_Activity_Detail" Association="Self.FK_Running_OutputActivity_text_Running_Activity_Detail">
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+            <End Role="APMT_Running_OutputActivity_text" EntitySet="APMT_Running_OutputActivity_text" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_OutputActivity_upload_Files" Association="Self.FK_Running_OutputActivity_upload_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Running_OutputActivity_upload" EntitySet="APMT_Running_OutputActivity_upload" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_OutputActivity_upload_Running_Activity_Detail" Association="Self.FK_Running_OutputActivity_upload_Running_Activity_Detail">
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+            <End Role="APMT_Running_OutputActivity_upload" EntitySet="APMT_Running_OutputActivity_upload" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Input_Files" Association="Self.FK_Running_Step_Input_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Running_Step_Input" EntitySet="APMT_Running_Step_Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Input_Running_Step_Detail" Association="Self.FK_Running_Step_Input_Running_Step_Detail">
+            <End Role="APMT_Running_Step_Detail" EntitySet="APMT_Running_Step_Detail" />
+            <End Role="APMT_Running_Step_Input" EntitySet="APMT_Running_Step_Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Input_Step_Input" Association="Self.FK_Running_Step_Input_Step_Input">
+            <End Role="APMT_Step_Input" EntitySet="APMT_Step_Input" />
+            <End Role="APMT_Running_Step_Input" EntitySet="APMT_Running_Step_Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Output_Files" Association="Self.FK_Running_Step_Output_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Running_Step_Output" EntitySet="APMT_Running_Step_Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Output_Running_Step_Detail" Association="Self.FK_Running_Step_Output_Running_Step_Detail">
+            <End Role="APMT_Running_Step_Detail" EntitySet="APMT_Running_Step_Detail" />
+            <End Role="APMT_Running_Step_Output" EntitySet="APMT_Running_Step_Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Output_Step_Output" Association="Self.FK_Running_Step_Output_Step_Output">
+            <End Role="APMT_Step_Output" EntitySet="APMT_Step_Output" />
+            <End Role="APMT_Running_Step_Output" EntitySet="APMT_Running_Step_Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Input_Files" Association="Self.FK_Step_Input_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Step_Input" EntitySet="APMT_Step_Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Input_Step" Association="Self.FK_Step_Input_Step">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Step_Input" EntitySet="APMT_Step_Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Output_Files" Association="Self.FK_Step_Output_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Step_Output" EntitySet="APMT_Step_Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Output_Step" Association="Self.FK_Step_Output_Step">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Step_Output" EntitySet="APMT_Step_Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Process" Association="Self.FK_Step_Process">
+            <End Role="APMT_Process" EntitySet="APMT_Process" />
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Role_Process_Role" Association="Self.FK_Step_Role_Process_Role">
+            <End Role="APMT_Process_Role" EntitySet="APMT_Process_Role" />
+            <End Role="APMT_Step_Role" EntitySet="APMT_Step_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Role_Step" Association="Self.FK_Step_Role_Step">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Step_Role" EntitySet="APMT_Step_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_To_Step_Step" Association="Self.FK_Step_To_Step_Step">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Step_To_Step" EntitySet="APMT_Step_To_Step" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_To_Step_Step1" Association="Self.FK_Step_To_Step_Step1">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Step_To_Step" EntitySet="APMT_Step_To_Step" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timeline_Running_Process_Detail" Association="Self.FK_Timeline_Running_Process_Detail">
+            <End Role="APMT_Running_Process_Detail" EntitySet="APMT_Running_Process_Detail" />
+            <End Role="APMT_Timeline" EntitySet="APMT_Timeline" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Company_Company" Association="Self.FK_User_Company_Company">
+            <End Role="APMT_Company" EntitySet="APMT_Company" />
+            <End Role="APMT_User_Company" EntitySet="APMT_User_Company" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DoT_APMT_DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DoT_APMT_DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="APMT_Activity" EntityType="DoT_APMT_DatabaseModel.APMT_Activity" />
+          <EntitySet Name="APMT_Activity_Status" EntityType="DoT_APMT_DatabaseModel.APMT_Activity_Status" />
+          <EntitySet Name="APMT_Comment" EntityType="DoT_APMT_DatabaseModel.APMT_Comment" />
+          <EntitySet Name="APMT_Company" EntityType="DoT_APMT_DatabaseModel.APMT_Company" />
+          <EntitySet Name="APMT_Company_Member" EntityType="DoT_APMT_DatabaseModel.APMT_Company_Member" />
+          <EntitySet Name="APMT_Files" EntityType="DoT_APMT_DatabaseModel.APMT_Files" />
+          <EntitySet Name="APMT_Process" EntityType="DoT_APMT_DatabaseModel.APMT_Process" />
+          <EntitySet Name="APMT_Process_Role" EntityType="DoT_APMT_DatabaseModel.APMT_Process_Role" />
+          <EntitySet Name="APMT_ProcessRoleUser_Detail" EntityType="DoT_APMT_DatabaseModel.APMT_ProcessRoleUser_Detail" />
+          <EntitySet Name="APMT_Project" EntityType="DoT_APMT_DatabaseModel.APMT_Project" />
+          <EntitySet Name="APMT_Running_Activity_Detail" EntityType="DoT_APMT_DatabaseModel.APMT_Running_Activity_Detail" />
+          <EntitySet Name="APMT_Running_OutputActivity_refer" EntityType="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_refer" />
+          <EntitySet Name="APMT_Running_OutputActivity_text" EntityType="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_text" />
+          <EntitySet Name="APMT_Running_OutputActivity_upload" EntityType="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_upload" />
+          <EntitySet Name="APMT_Running_Process_Detail" EntityType="DoT_APMT_DatabaseModel.APMT_Running_Process_Detail" />
+          <EntitySet Name="APMT_Running_Step_Detail" EntityType="DoT_APMT_DatabaseModel.APMT_Running_Step_Detail" />
+          <EntitySet Name="APMT_Running_Step_Input" EntityType="DoT_APMT_DatabaseModel.APMT_Running_Step_Input" />
+          <EntitySet Name="APMT_Running_Step_Output" EntityType="DoT_APMT_DatabaseModel.APMT_Running_Step_Output" />
+          <EntitySet Name="APMT_Step" EntityType="DoT_APMT_DatabaseModel.APMT_Step" />
+          <EntitySet Name="APMT_Step_Input" EntityType="DoT_APMT_DatabaseModel.APMT_Step_Input" />
+          <EntitySet Name="APMT_Step_Output" EntityType="DoT_APMT_DatabaseModel.APMT_Step_Output" />
+          <EntitySet Name="APMT_Step_Role" EntityType="DoT_APMT_DatabaseModel.APMT_Step_Role" />
+          <EntitySet Name="APMT_Step_To_Step" EntityType="DoT_APMT_DatabaseModel.APMT_Step_To_Step" />
+          <EntitySet Name="APMT_Timeline" EntityType="DoT_APMT_DatabaseModel.APMT_Timeline" />
+          <EntitySet Name="APMT_Type_Output" EntityType="DoT_APMT_DatabaseModel.APMT_Type_Output" />
+          <EntitySet Name="APMT_User_Company" EntityType="DoT_APMT_DatabaseModel.APMT_User_Company" />
+          <EntitySet Name="APMT_Users" EntityType="DoT_APMT_DatabaseModel.APMT_Users" />
+          <EntitySet Name="Company_Role" EntityType="DoT_APMT_DatabaseModel.Company_Role" />
+          <EntitySet Name="sysdiagrams" EntityType="DoT_APMT_DatabaseModel.sysdiagram" />
+          <AssociationSet Name="FK_Activity_Files" Association="DoT_APMT_DatabaseModel.FK_Activity_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Activity" EntitySet="APMT_Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_Step" Association="DoT_APMT_DatabaseModel.FK_Activity_Step">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Activity" EntitySet="APMT_Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_Type_Output" Association="DoT_APMT_DatabaseModel.FK_Activity_Type_Output">
+            <End Role="APMT_Type_Output" EntitySet="APMT_Type_Output" />
+            <End Role="APMT_Activity" EntitySet="APMT_Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Activity_Detail_Activity" Association="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Activity">
+            <End Role="APMT_Activity" EntitySet="APMT_Activity" />
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_OutputActivity_refer_Activity" Association="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_refer_Activity">
+            <End Role="APMT_Activity" EntitySet="APMT_Activity" />
+            <End Role="APMT_Running_OutputActivity_refer" EntitySet="APMT_Running_OutputActivity_refer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Activity_Detail_Activity_Status" Association="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Activity_Status">
+            <End Role="APMT_Activity_Status" EntitySet="APMT_Activity_Status" />
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Running_Activity_Detail" Association="DoT_APMT_DatabaseModel.FK_Comment_Running_Activity_Detail">
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+            <End Role="APMT_Comment" EntitySet="APMT_Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Admin_Company" Association="DoT_APMT_DatabaseModel.FK_Company_Admin_Company">
+            <End Role="APMT_Company" EntitySet="APMT_Company" />
+            <End Role="APMT_Company_Member" EntitySet="APMT_Company_Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Company" Association="DoT_APMT_DatabaseModel.FK_Project_Company">
+            <End Role="APMT_Company" EntitySet="APMT_Company" />
+            <End Role="APMT_Project" EntitySet="APMT_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Company_Company" Association="DoT_APMT_DatabaseModel.FK_User_Company_Company">
+            <End Role="APMT_Company" EntitySet="APMT_Company" />
+            <End Role="APMT_User_Company" EntitySet="APMT_User_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Admin_Users" Association="DoT_APMT_DatabaseModel.FK_Company_Admin_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_Company_Member" EntitySet="APMT_Company_Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Files_Process" Association="DoT_APMT_DatabaseModel.FK_Files_Process">
+            <End Role="APMT_Process" EntitySet="APMT_Process" />
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_OutputActivity_upload_Files" Association="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_upload_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Running_OutputActivity_upload" EntitySet="APMT_Running_OutputActivity_upload" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Input_Files" Association="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Running_Step_Input" EntitySet="APMT_Running_Step_Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Output_Files" Association="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Running_Step_Output" EntitySet="APMT_Running_Step_Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Input_Files" Association="DoT_APMT_DatabaseModel.FK_Step_Input_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Step_Input" EntitySet="APMT_Step_Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Output_Files" Association="DoT_APMT_DatabaseModel.FK_Step_Output_Files">
+            <End Role="APMT_Files" EntitySet="APMT_Files" />
+            <End Role="APMT_Step_Output" EntitySet="APMT_Step_Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_APMT_Process_APMT_Users" Association="DoT_APMT_DatabaseModel.FK_APMT_Process_APMT_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_Process" EntitySet="APMT_Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Process" Association="DoT_APMT_DatabaseModel.FK_Step_Process">
+            <End Role="APMT_Process" EntitySet="APMT_Process" />
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessRoleUser_Detail_Process_Role" Association="DoT_APMT_DatabaseModel.FK_ProcessRoleUser_Detail_Process_Role">
+            <End Role="APMT_Process_Role" EntitySet="APMT_Process_Role" />
+            <End Role="APMT_ProcessRoleUser_Detail" EntitySet="APMT_ProcessRoleUser_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Role_Process_Role" Association="DoT_APMT_DatabaseModel.FK_Step_Role_Process_Role">
+            <End Role="APMT_Process_Role" EntitySet="APMT_Process_Role" />
+            <End Role="APMT_Step_Role" EntitySet="APMT_Step_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessRoleUser_Detail_Users" Association="DoT_APMT_DatabaseModel.FK_ProcessRoleUser_Detail_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_ProcessRoleUser_Detail" EntitySet="APMT_ProcessRoleUser_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_APMT_Running_Process_Detail_APMT_Project" Association="DoT_APMT_DatabaseModel.FK_APMT_Running_Process_Detail_APMT_Project">
+            <End Role="APMT_Project" EntitySet="APMT_Project" />
+            <End Role="APMT_Running_Process_Detail" EntitySet="APMT_Running_Process_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Users" Association="DoT_APMT_DatabaseModel.FK_Project_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_Project" EntitySet="APMT_Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Activity_Detail_Users" Association="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_OutputActivity_text_Running_Activity_Detail" Association="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_text_Running_Activity_Detail">
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+            <End Role="APMT_Running_OutputActivity_text" EntitySet="APMT_Running_OutputActivity_text" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_OutputActivity_upload_Running_Activity_Detail" Association="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_upload_Running_Activity_Detail">
+            <End Role="APMT_Running_Activity_Detail" EntitySet="APMT_Running_Activity_Detail" />
+            <End Role="APMT_Running_OutputActivity_upload" EntitySet="APMT_Running_OutputActivity_upload" />
+          </AssociationSet>
+          <AssociationSet Name="FK_APMT_Running_Process_Detail_APMT_Users" Association="DoT_APMT_DatabaseModel.FK_APMT_Running_Process_Detail_APMT_Users">
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+            <End Role="APMT_Running_Process_Detail" EntitySet="APMT_Running_Process_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timeline_Running_Process_Detail" Association="DoT_APMT_DatabaseModel.FK_Timeline_Running_Process_Detail">
+            <End Role="APMT_Running_Process_Detail" EntitySet="APMT_Running_Process_Detail" />
+            <End Role="APMT_Timeline" EntitySet="APMT_Timeline" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Input_Running_Step_Detail" Association="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Running_Step_Detail">
+            <End Role="APMT_Running_Step_Detail" EntitySet="APMT_Running_Step_Detail" />
+            <End Role="APMT_Running_Step_Input" EntitySet="APMT_Running_Step_Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Output_Running_Step_Detail" Association="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Running_Step_Detail">
+            <End Role="APMT_Running_Step_Detail" EntitySet="APMT_Running_Step_Detail" />
+            <End Role="APMT_Running_Step_Output" EntitySet="APMT_Running_Step_Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Input_Step_Input" Association="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Step_Input">
+            <End Role="APMT_Step_Input" EntitySet="APMT_Step_Input" />
+            <End Role="APMT_Running_Step_Input" EntitySet="APMT_Running_Step_Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Running_Step_Output_Step_Output" Association="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Step_Output">
+            <End Role="APMT_Step_Output" EntitySet="APMT_Step_Output" />
+            <End Role="APMT_Running_Step_Output" EntitySet="APMT_Running_Step_Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Input_Step" Association="DoT_APMT_DatabaseModel.FK_Step_Input_Step">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Step_Input" EntitySet="APMT_Step_Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Output_Step" Association="DoT_APMT_DatabaseModel.FK_Step_Output_Step">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Step_Output" EntitySet="APMT_Step_Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Role_Step" Association="DoT_APMT_DatabaseModel.FK_Step_Role_Step">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Step_Role" EntitySet="APMT_Step_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_To_Step_Step" Association="DoT_APMT_DatabaseModel.FK_Step_To_Step_Step">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Step_To_Step" EntitySet="APMT_Step_To_Step" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_To_Step_Step1" Association="DoT_APMT_DatabaseModel.FK_Step_To_Step_Step1">
+            <End Role="APMT_Step" EntitySet="APMT_Step" />
+            <End Role="APMT_Step_To_Step" EntitySet="APMT_Step_To_Step" />
+          </AssociationSet>
+          <AssociationSet Name="FK_APMT_Users_Company_Role" Association="DoT_APMT_DatabaseModel.FK_APMT_Users_Company_Role">
+            <End Role="Company_Role" EntitySet="Company_Role" />
+            <End Role="APMT_Users" EntitySet="APMT_Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="APMT_Activity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="descriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="step_id" Type="Int32" Nullable="false" />
+          <Property Name="weights" Type="Int32" Nullable="false" />
+          <Property Name="predecessor" Type="Int32" Nullable="false" />
+          <Property Name="type_output_id" Type="Int32" Nullable="false" />
+          <Property Name="process_id" Type="Int32" />
+          <Property Name="files_id" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="APMT_Files" Relationship="DoT_APMT_DatabaseModel.FK_Activity_Files" FromRole="APMT_Activity" ToRole="APMT_Files" />
+          <NavigationProperty Name="APMT_Step" Relationship="DoT_APMT_DatabaseModel.FK_Activity_Step" FromRole="APMT_Activity" ToRole="APMT_Step" />
+          <NavigationProperty Name="APMT_Type_Output" Relationship="DoT_APMT_DatabaseModel.FK_Activity_Type_Output" FromRole="APMT_Activity" ToRole="APMT_Type_Output" />
+          <NavigationProperty Name="APMT_Running_Activity_Detail" Relationship="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Activity" FromRole="APMT_Activity" ToRole="APMT_Running_Activity_Detail" />
+          <NavigationProperty Name="APMT_Running_OutputActivity_refer" Relationship="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_refer_Activity" FromRole="APMT_Activity" ToRole="APMT_Running_OutputActivity_refer" />
+        </EntityType>
+        <EntityType Name="APMT_Activity_Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="code" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Running_Activity_Detail" Relationship="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Activity_Status" FromRole="APMT_Activity_Status" ToRole="APMT_Running_Activity_Detail" />
+        </EntityType>
+        <EntityType Name="APMT_Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Running_Activity_Detail_id" Type="Int32" Nullable="false" />
+          <Property Name="Contents" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="APMT_Running_Activity_Detail" Relationship="DoT_APMT_DatabaseModel.FK_Comment_Running_Activity_Detail" FromRole="APMT_Comment" ToRole="APMT_Running_Activity_Detail" />
+        </EntityType>
+        <EntityType Name="APMT_Company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="company_admin_email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="APMT_Company_Member" Relationship="DoT_APMT_DatabaseModel.FK_Company_Admin_Company" FromRole="APMT_Company" ToRole="APMT_Company_Member" />
+          <NavigationProperty Name="APMT_Project" Relationship="DoT_APMT_DatabaseModel.FK_Project_Company" FromRole="APMT_Company" ToRole="APMT_Project" />
+          <NavigationProperty Name="APMT_User_Company" Relationship="DoT_APMT_DatabaseModel.FK_User_Company_Company" FromRole="APMT_Company" ToRole="APMT_User_Company" />
+        </EntityType>
+        <EntityType Name="APMT_Company_Member">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="users_id" Type="Int32" Nullable="false" />
+          <Property Name="company_id" Type="Int32" Nullable="false" />
+          <Property Name="Company_Role_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Company" Relationship="DoT_APMT_DatabaseModel.FK_Company_Admin_Company" FromRole="APMT_Company_Member" ToRole="APMT_Company" />
+          <NavigationProperty Name="APMT_Users" Relationship="DoT_APMT_DatabaseModel.FK_Company_Admin_Users" FromRole="APMT_Company_Member" ToRole="APMT_Users" />
+        </EntityType>
+        <EntityType Name="APMT_Files">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="isdeliverable" Type="Boolean" Nullable="false" />
+          <Property Name="process_id" Type="Int32" Nullable="false" />
+          <Property Name="descriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="APMT_Activity" Relationship="DoT_APMT_DatabaseModel.FK_Activity_Files" FromRole="APMT_Files" ToRole="APMT_Activity" />
+          <NavigationProperty Name="APMT_Process" Relationship="DoT_APMT_DatabaseModel.FK_Files_Process" FromRole="APMT_Files" ToRole="APMT_Process" />
+          <NavigationProperty Name="APMT_Running_OutputActivity_upload" Relationship="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_upload_Files" FromRole="APMT_Files" ToRole="APMT_Running_OutputActivity_upload" />
+          <NavigationProperty Name="APMT_Running_Step_Input" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Files" FromRole="APMT_Files" ToRole="APMT_Running_Step_Input" />
+          <NavigationProperty Name="APMT_Running_Step_Output" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Files" FromRole="APMT_Files" ToRole="APMT_Running_Step_Output" />
+          <NavigationProperty Name="APMT_Step_Input" Relationship="DoT_APMT_DatabaseModel.FK_Step_Input_Files" FromRole="APMT_Files" ToRole="APMT_Step_Input" />
+          <NavigationProperty Name="APMT_Step_Output" Relationship="DoT_APMT_DatabaseModel.FK_Step_Output_Files" FromRole="APMT_Files" ToRole="APMT_Step_Output" />
+        </EntityType>
+        <EntityType Name="APMT_Process">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="XMLContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Creator_id" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="APMT_Files" Relationship="DoT_APMT_DatabaseModel.FK_Files_Process" FromRole="APMT_Process" ToRole="APMT_Files" />
+          <NavigationProperty Name="APMT_Users" Relationship="DoT_APMT_DatabaseModel.FK_APMT_Process_APMT_Users" FromRole="APMT_Process" ToRole="APMT_Users" />
+          <NavigationProperty Name="APMT_Step" Relationship="DoT_APMT_DatabaseModel.FK_Step_Process" FromRole="APMT_Process" ToRole="APMT_Step" />
+        </EntityType>
+        <EntityType Name="APMT_Process_Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="process_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_ProcessRoleUser_Detail" Relationship="DoT_APMT_DatabaseModel.FK_ProcessRoleUser_Detail_Process_Role" FromRole="APMT_Process_Role" ToRole="APMT_ProcessRoleUser_Detail" />
+          <NavigationProperty Name="APMT_Step_Role" Relationship="DoT_APMT_DatabaseModel.FK_Step_Role_Process_Role" FromRole="APMT_Process_Role" ToRole="APMT_Step_Role" />
+        </EntityType>
+        <EntityType Name="APMT_ProcessRoleUser_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="process_role_id" Type="Int32" Nullable="false" />
+          <Property Name="users_id" Type="Int32" Nullable="false" />
+          <Property Name="running_process_detail_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Process_Role" Relationship="DoT_APMT_DatabaseModel.FK_ProcessRoleUser_Detail_Process_Role" FromRole="APMT_ProcessRoleUser_Detail" ToRole="APMT_Process_Role" />
+          <NavigationProperty Name="APMT_Users" Relationship="DoT_APMT_DatabaseModel.FK_ProcessRoleUser_Detail_Users" FromRole="APMT_ProcessRoleUser_Detail" ToRole="APMT_Users" />
+        </EntityType>
+        <EntityType Name="APMT_Project">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Descriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="manager_id" Type="Int32" Nullable="false" />
+          <Property Name="company_id" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="APMT_Company" Relationship="DoT_APMT_DatabaseModel.FK_Project_Company" FromRole="APMT_Project" ToRole="APMT_Company" />
+          <NavigationProperty Name="APMT_Running_Process_Detail" Relationship="DoT_APMT_DatabaseModel.FK_APMT_Running_Process_Detail_APMT_Project" FromRole="APMT_Project" ToRole="APMT_Running_Process_Detail" />
+          <NavigationProperty Name="APMT_Users" Relationship="DoT_APMT_DatabaseModel.FK_Project_Users" FromRole="APMT_Project" ToRole="APMT_Users" />
+        </EntityType>
+        <EntityType Name="APMT_Running_Activity_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Activity_id" Type="Int32" Nullable="false" />
+          <Property Name="Member_id" Type="Int32" Nullable="false" />
+          <Property Name="Running_Step_Detail_id" Type="Int32" Nullable="false" />
+          <Property Name="Activity_Status_id" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="APMT_Activity" Relationship="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Activity" FromRole="APMT_Running_Activity_Detail" ToRole="APMT_Activity" />
+          <NavigationProperty Name="APMT_Activity_Status" Relationship="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Activity_Status" FromRole="APMT_Running_Activity_Detail" ToRole="APMT_Activity_Status" />
+          <NavigationProperty Name="APMT_Comment" Relationship="DoT_APMT_DatabaseModel.FK_Comment_Running_Activity_Detail" FromRole="APMT_Running_Activity_Detail" ToRole="APMT_Comment" />
+          <NavigationProperty Name="APMT_Users" Relationship="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Users" FromRole="APMT_Running_Activity_Detail" ToRole="APMT_Users" />
+          <NavigationProperty Name="APMT_Running_OutputActivity_text" Relationship="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_text_Running_Activity_Detail" FromRole="APMT_Running_Activity_Detail" ToRole="APMT_Running_OutputActivity_text" />
+          <NavigationProperty Name="APMT_Running_OutputActivity_upload" Relationship="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_upload_Running_Activity_Detail" FromRole="APMT_Running_Activity_Detail" ToRole="APMT_Running_OutputActivity_upload" />
+        </EntityType>
+        <EntityType Name="APMT_Running_OutputActivity_refer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Activity_output_Refer_id" Type="Int32" Nullable="false" />
+          <Property Name="process_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Activity" Relationship="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_refer_Activity" FromRole="APMT_Running_OutputActivity_refer" ToRole="APMT_Activity" />
+        </EntityType>
+        <EntityType Name="APMT_Running_OutputActivity_text">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Timestamps" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="contents" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="running_activity_detail_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Running_Activity_Detail" Relationship="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_text_Running_Activity_Detail" FromRole="APMT_Running_OutputActivity_text" ToRole="APMT_Running_Activity_Detail" />
+        </EntityType>
+        <EntityType Name="APMT_Running_OutputActivity_upload">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Versions" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Timestamps" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Files_id" Type="Int32" Nullable="false" />
+          <Property Name="running_activity_detail_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Files" Relationship="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_upload_Files" FromRole="APMT_Running_OutputActivity_upload" ToRole="APMT_Files" />
+          <NavigationProperty Name="APMT_Running_Activity_Detail" Relationship="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_upload_Running_Activity_Detail" FromRole="APMT_Running_OutputActivity_upload" ToRole="APMT_Running_Activity_Detail" />
+        </EntityType>
+        <EntityType Name="APMT_Running_Process_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="process_id" Type="Int32" Nullable="false" />
+          <Property Name="leader_id" Type="Int32" Nullable="false" />
+          <Property Name="targetdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="project_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Project" Relationship="DoT_APMT_DatabaseModel.FK_APMT_Running_Process_Detail_APMT_Project" FromRole="APMT_Running_Process_Detail" ToRole="APMT_Project" />
+          <NavigationProperty Name="APMT_Users" Relationship="DoT_APMT_DatabaseModel.FK_APMT_Running_Process_Detail_APMT_Users" FromRole="APMT_Running_Process_Detail" ToRole="APMT_Users" />
+          <NavigationProperty Name="APMT_Timeline" Relationship="DoT_APMT_DatabaseModel.FK_Timeline_Running_Process_Detail" FromRole="APMT_Running_Process_Detail" ToRole="APMT_Timeline" />
+        </EntityType>
+        <EntityType Name="APMT_Running_Step_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TargetDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="step_id" Type="Int32" Nullable="false" />
+          <Property Name="Running_Process_Detail_id" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="APMT_Running_Step_Input" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Running_Step_Detail" FromRole="APMT_Running_Step_Detail" ToRole="APMT_Running_Step_Input" />
+          <NavigationProperty Name="APMT_Running_Step_Output" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Running_Step_Detail" FromRole="APMT_Running_Step_Detail" ToRole="APMT_Running_Step_Output" />
+        </EntityType>
+        <EntityType Name="APMT_Running_Step_Input">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Versions" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Timestamps" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Files_id" Type="Int32" Nullable="false" />
+          <Property Name="running_step_detail_id" Type="Int32" Nullable="false" />
+          <Property Name="Step_Input_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Files" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Files" FromRole="APMT_Running_Step_Input" ToRole="APMT_Files" />
+          <NavigationProperty Name="APMT_Running_Step_Detail" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Running_Step_Detail" FromRole="APMT_Running_Step_Input" ToRole="APMT_Running_Step_Detail" />
+          <NavigationProperty Name="APMT_Step_Input" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Step_Input" FromRole="APMT_Running_Step_Input" ToRole="APMT_Step_Input" />
+        </EntityType>
+        <EntityType Name="APMT_Running_Step_Output">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Versions" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Timestamps" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Files_id" Type="Int32" Nullable="false" />
+          <Property Name="running_step_detail_id" Type="Int32" Nullable="false" />
+          <Property Name="Step_Output_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Files" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Files" FromRole="APMT_Running_Step_Output" ToRole="APMT_Files" />
+          <NavigationProperty Name="APMT_Running_Step_Detail" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Running_Step_Detail" FromRole="APMT_Running_Step_Output" ToRole="APMT_Running_Step_Detail" />
+          <NavigationProperty Name="APMT_Step_Output" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Step_Output" FromRole="APMT_Running_Step_Output" ToRole="APMT_Step_Output" />
+        </EntityType>
+        <EntityType Name="APMT_Step">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="descriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="process_id" Type="Int32" Nullable="false" />
+          <Property Name="weights" Type="Int32" Nullable="false" />
+          <Property Name="typess" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="APMT_Activity" Relationship="DoT_APMT_DatabaseModel.FK_Activity_Step" FromRole="APMT_Step" ToRole="APMT_Activity" />
+          <NavigationProperty Name="APMT_Process" Relationship="DoT_APMT_DatabaseModel.FK_Step_Process" FromRole="APMT_Step" ToRole="APMT_Process" />
+          <NavigationProperty Name="APMT_Step_Input" Relationship="DoT_APMT_DatabaseModel.FK_Step_Input_Step" FromRole="APMT_Step" ToRole="APMT_Step_Input" />
+          <NavigationProperty Name="APMT_Step_Output" Relationship="DoT_APMT_DatabaseModel.FK_Step_Output_Step" FromRole="APMT_Step" ToRole="APMT_Step_Output" />
+          <NavigationProperty Name="APMT_Step_Role" Relationship="DoT_APMT_DatabaseModel.FK_Step_Role_Step" FromRole="APMT_Step" ToRole="APMT_Step_Role" />
+          <NavigationProperty Name="APMT_Step_To_Step" Relationship="DoT_APMT_DatabaseModel.FK_Step_To_Step_Step" FromRole="APMT_Step" ToRole="APMT_Step_To_Step" />
+          <NavigationProperty Name="APMT_Step_To_Step1" Relationship="DoT_APMT_DatabaseModel.FK_Step_To_Step_Step1" FromRole="APMT_Step" ToRole="APMT_Step_To_Step" />
+        </EntityType>
+        <EntityType Name="APMT_Step_Input">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Files_id" Type="Int32" Nullable="false" />
+          <Property Name="Step_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Files" Relationship="DoT_APMT_DatabaseModel.FK_Step_Input_Files" FromRole="APMT_Step_Input" ToRole="APMT_Files" />
+          <NavigationProperty Name="APMT_Running_Step_Input" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Step_Input" FromRole="APMT_Step_Input" ToRole="APMT_Running_Step_Input" />
+          <NavigationProperty Name="APMT_Step" Relationship="DoT_APMT_DatabaseModel.FK_Step_Input_Step" FromRole="APMT_Step_Input" ToRole="APMT_Step" />
+        </EntityType>
+        <EntityType Name="APMT_Step_Output">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Files_id" Type="Int32" Nullable="false" />
+          <Property Name="Step_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Files" Relationship="DoT_APMT_DatabaseModel.FK_Step_Output_Files" FromRole="APMT_Step_Output" ToRole="APMT_Files" />
+          <NavigationProperty Name="APMT_Running_Step_Output" Relationship="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Step_Output" FromRole="APMT_Step_Output" ToRole="APMT_Running_Step_Output" />
+          <NavigationProperty Name="APMT_Step" Relationship="DoT_APMT_DatabaseModel.FK_Step_Output_Step" FromRole="APMT_Step_Output" ToRole="APMT_Step" />
+        </EntityType>
+        <EntityType Name="APMT_Step_Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="step_id" Type="Int32" Nullable="false" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Process_Role" Relationship="DoT_APMT_DatabaseModel.FK_Step_Role_Process_Role" FromRole="APMT_Step_Role" ToRole="APMT_Process_Role" />
+          <NavigationProperty Name="APMT_Step" Relationship="DoT_APMT_DatabaseModel.FK_Step_Role_Step" FromRole="APMT_Step_Role" ToRole="APMT_Step" />
+        </EntityType>
+        <EntityType Name="APMT_Step_To_Step">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fromStep_id" Type="Int32" Nullable="false" />
+          <Property Name="toStep_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Step" Relationship="DoT_APMT_DatabaseModel.FK_Step_To_Step_Step" FromRole="APMT_Step_To_Step" ToRole="APMT_Step" />
+          <NavigationProperty Name="APMT_Step1" Relationship="DoT_APMT_DatabaseModel.FK_Step_To_Step_Step1" FromRole="APMT_Step_To_Step" ToRole="APMT_Step" />
+        </EntityType>
+        <EntityType Name="APMT_Timeline">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Running_Process_Detail_id" Type="Int32" Nullable="false" />
+          <Property Name="Contents" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="APMT_Running_Process_Detail" Relationship="DoT_APMT_DatabaseModel.FK_Timeline_Running_Process_Detail" FromRole="APMT_Timeline" ToRole="APMT_Running_Process_Detail" />
+        </EntityType>
+        <EntityType Name="APMT_Type_Output">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="code" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Activity" Relationship="DoT_APMT_DatabaseModel.FK_Activity_Type_Output" FromRole="APMT_Type_Output" ToRole="APMT_Activity" />
+        </EntityType>
+        <EntityType Name="APMT_User_Company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="users_id" Type="Int32" Nullable="false" />
+          <Property Name="company_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APMT_Company" Relationship="DoT_APMT_DatabaseModel.FK_User_Company_Company" FromRole="APMT_User_Company" ToRole="APMT_Company" />
+        </EntityType>
+        <EntityType Name="APMT_Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Passwords" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Statuss" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IDRole" Type="Int32" />
+          <NavigationProperty Name="APMT_Company_Member" Relationship="DoT_APMT_DatabaseModel.FK_Company_Admin_Users" FromRole="APMT_Users" ToRole="APMT_Company_Member" />
+          <NavigationProperty Name="APMT_Process" Relationship="DoT_APMT_DatabaseModel.FK_APMT_Process_APMT_Users" FromRole="APMT_Users" ToRole="APMT_Process" />
+          <NavigationProperty Name="APMT_ProcessRoleUser_Detail" Relationship="DoT_APMT_DatabaseModel.FK_ProcessRoleUser_Detail_Users" FromRole="APMT_Users" ToRole="APMT_ProcessRoleUser_Detail" />
+          <NavigationProperty Name="APMT_Project" Relationship="DoT_APMT_DatabaseModel.FK_Project_Users" FromRole="APMT_Users" ToRole="APMT_Project" />
+          <NavigationProperty Name="APMT_Running_Activity_Detail" Relationship="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Users" FromRole="APMT_Users" ToRole="APMT_Running_Activity_Detail" />
+          <NavigationProperty Name="APMT_Running_Process_Detail" Relationship="DoT_APMT_DatabaseModel.FK_APMT_Running_Process_Detail_APMT_Users" FromRole="APMT_Users" ToRole="APMT_Running_Process_Detail" />
+          <NavigationProperty Name="Company_Role" Relationship="DoT_APMT_DatabaseModel.FK_APMT_Users_Company_Role" FromRole="APMT_Users" ToRole="Company_Role" />
+        </EntityType>
+        <EntityType Name="Company_Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="APMT_Users" Relationship="DoT_APMT_DatabaseModel.FK_APMT_Users_Company_Role" FromRole="Company_Role" ToRole="APMT_Users" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Activity_Files">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Files" Role="APMT_Files" Multiplicity="0..1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Activity" Role="APMT_Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Activity">
+              <PropertyRef Name="files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_Step">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step" Role="APMT_Step" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Activity" Role="APMT_Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Activity">
+              <PropertyRef Name="step_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_Type_Output">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Type_Output" Role="APMT_Type_Output" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Activity" Role="APMT_Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Type_Output">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Activity">
+              <PropertyRef Name="type_output_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Activity_Detail_Activity">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Activity" Role="APMT_Activity" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Activity_Detail" Role="APMT_Running_Activity_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Activity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="Activity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_OutputActivity_refer_Activity">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Activity" Role="APMT_Activity" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_refer" Role="APMT_Running_OutputActivity_refer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Activity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_OutputActivity_refer">
+              <PropertyRef Name="Activity_output_Refer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Activity_Detail_Activity_Status">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Activity_Status" Role="APMT_Activity_Status" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Activity_Detail" Role="APMT_Running_Activity_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Activity_Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="Activity_Status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Running_Activity_Detail">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Activity_Detail" Role="APMT_Running_Activity_Detail" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Comment" Role="APMT_Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Comment">
+              <PropertyRef Name="Running_Activity_Detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Admin_Company">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Company" Role="APMT_Company" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Company_Member" Role="APMT_Company_Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Company_Member">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Company">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Company" Role="APMT_Company" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Project" Role="APMT_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Project">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Company_Company">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Company" Role="APMT_Company" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_User_Company" Role="APMT_User_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_User_Company">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Admin_Users">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Users" Role="APMT_Users" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Company_Member" Role="APMT_Company_Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Company_Member">
+              <PropertyRef Name="users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Files_Process">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Process" Role="APMT_Process" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Files" Role="APMT_Files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Process">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Files">
+              <PropertyRef Name="process_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_OutputActivity_upload_Files">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Files" Role="APMT_Files" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_upload" Role="APMT_Running_OutputActivity_upload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_OutputActivity_upload">
+              <PropertyRef Name="Files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Input_Files">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Files" Role="APMT_Files" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Step_Input" Role="APMT_Running_Step_Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Input">
+              <PropertyRef Name="Files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Output_Files">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Files" Role="APMT_Files" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Step_Output" Role="APMT_Running_Step_Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Output">
+              <PropertyRef Name="Files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Input_Files">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Files" Role="APMT_Files" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step_Input" Role="APMT_Step_Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Input">
+              <PropertyRef Name="Files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Output_Files">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Files" Role="APMT_Files" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step_Output" Role="APMT_Step_Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Output">
+              <PropertyRef Name="Files_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_APMT_Process_APMT_Users">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Users" Role="APMT_Users" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Process" Role="APMT_Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Process">
+              <PropertyRef Name="Creator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Process">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Process" Role="APMT_Process" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step" Role="APMT_Step" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Process">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step">
+              <PropertyRef Name="process_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessRoleUser_Detail_Process_Role">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Process_Role" Role="APMT_Process_Role" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_ProcessRoleUser_Detail" Role="APMT_ProcessRoleUser_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Process_Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_ProcessRoleUser_Detail">
+              <PropertyRef Name="process_role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Role_Process_Role">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Process_Role" Role="APMT_Process_Role" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step_Role" Role="APMT_Step_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Process_Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Role">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessRoleUser_Detail_Users">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Users" Role="APMT_Users" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_ProcessRoleUser_Detail" Role="APMT_ProcessRoleUser_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_ProcessRoleUser_Detail">
+              <PropertyRef Name="users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_APMT_Running_Process_Detail_APMT_Project">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Project" Role="APMT_Project" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Process_Detail" Role="APMT_Running_Process_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Project">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Process_Detail">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Users">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Users" Role="APMT_Users" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Project" Role="APMT_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Project">
+              <PropertyRef Name="manager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Activity_Detail_Users">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Users" Role="APMT_Users" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Activity_Detail" Role="APMT_Running_Activity_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="Member_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_OutputActivity_text_Running_Activity_Detail">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Activity_Detail" Role="APMT_Running_Activity_Detail" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_text" Role="APMT_Running_OutputActivity_text" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_OutputActivity_text">
+              <PropertyRef Name="running_activity_detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_OutputActivity_upload_Running_Activity_Detail">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Activity_Detail" Role="APMT_Running_Activity_Detail" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_upload" Role="APMT_Running_OutputActivity_upload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Activity_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_OutputActivity_upload">
+              <PropertyRef Name="running_activity_detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_APMT_Running_Process_Detail_APMT_Users">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Users" Role="APMT_Users" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Process_Detail" Role="APMT_Running_Process_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Process_Detail">
+              <PropertyRef Name="leader_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timeline_Running_Process_Detail">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Process_Detail" Role="APMT_Running_Process_Detail" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Timeline" Role="APMT_Timeline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Process_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Timeline">
+              <PropertyRef Name="Running_Process_Detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Input_Running_Step_Detail">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Step_Detail" Role="APMT_Running_Step_Detail" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Step_Input" Role="APMT_Running_Step_Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Step_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Input">
+              <PropertyRef Name="running_step_detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Output_Running_Step_Detail">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Step_Detail" Role="APMT_Running_Step_Detail" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Step_Output" Role="APMT_Running_Step_Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Running_Step_Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Output">
+              <PropertyRef Name="running_step_detail_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Input_Step_Input">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step_Input" Role="APMT_Step_Input" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Step_Input" Role="APMT_Running_Step_Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step_Input">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Input">
+              <PropertyRef Name="Step_Input_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Running_Step_Output_Step_Output">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step_Output" Role="APMT_Step_Output" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Running_Step_Output" Role="APMT_Running_Step_Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step_Output">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Running_Step_Output">
+              <PropertyRef Name="Step_Output_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Input_Step">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step" Role="APMT_Step" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step_Input" Role="APMT_Step_Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Input">
+              <PropertyRef Name="Step_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Output_Step">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step" Role="APMT_Step" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step_Output" Role="APMT_Step_Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Output">
+              <PropertyRef Name="Step_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_Role_Step">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step" Role="APMT_Step" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step_Role" Role="APMT_Step_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_Role">
+              <PropertyRef Name="step_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_To_Step_Step">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step" Role="APMT_Step" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step_To_Step" Role="APMT_Step_To_Step" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_To_Step">
+              <PropertyRef Name="fromStep_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Step_To_Step_Step1">
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step" Role="APMT_Step" Multiplicity="1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Step_To_Step" Role="APMT_Step_To_Step" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APMT_Step">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Step_To_Step">
+              <PropertyRef Name="toStep_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_APMT_Users_Company_Role">
+          <End Type="DoT_APMT_DatabaseModel.Company_Role" Role="Company_Role" Multiplicity="0..1" />
+          <End Type="DoT_APMT_DatabaseModel.APMT_Users" Role="APMT_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company_Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="APMT_Users">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DoT_APMT_DatabaseModelStoreContainer" CdmEntityContainer="DoT_APMT_DatabaseEntities">
+          <EntitySetMapping Name="APMT_Activity">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Activity">
+              <MappingFragment StoreEntitySet="APMT_Activity">
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="files_id" ColumnName="files_id" />
+                <ScalarProperty Name="process_id" ColumnName="process_id" />
+                <ScalarProperty Name="type_output_id" ColumnName="type_output_id" />
+                <ScalarProperty Name="predecessor" ColumnName="predecessor" />
+                <ScalarProperty Name="weights" ColumnName="weights" />
+                <ScalarProperty Name="step_id" ColumnName="step_id" />
+                <ScalarProperty Name="descriptions" ColumnName="descriptions" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Activity_Status">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Activity_Status">
+              <MappingFragment StoreEntitySet="APMT_Activity_Status">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Comment">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Comment">
+              <MappingFragment StoreEntitySet="APMT_Comment">
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Running_Activity_Detail_id" ColumnName="Running_Activity_Detail_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Company">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Company">
+              <MappingFragment StoreEntitySet="APMT_Company">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="company_admin_email" ColumnName="company_admin_email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Company_Member">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Company_Member">
+              <MappingFragment StoreEntitySet="APMT_Company_Member">
+                <ScalarProperty Name="Company_Role_Id" ColumnName="Company_Role_Id" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="users_id" ColumnName="users_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Files">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Files">
+              <MappingFragment StoreEntitySet="APMT_Files">
+                <ScalarProperty Name="descriptions" ColumnName="descriptions" />
+                <ScalarProperty Name="process_id" ColumnName="process_id" />
+                <ScalarProperty Name="isdeliverable" ColumnName="isdeliverable" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Process">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Process">
+              <MappingFragment StoreEntitySet="APMT_Process">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Creator_id" ColumnName="Creator_id" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="XMLContent" ColumnName="XMLContent" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Process_Role">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Process_Role">
+              <MappingFragment StoreEntitySet="APMT_Process_Role">
+                <ScalarProperty Name="process_id" ColumnName="process_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_ProcessRoleUser_Detail">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_ProcessRoleUser_Detail">
+              <MappingFragment StoreEntitySet="APMT_ProcessRoleUser_Detail">
+                <ScalarProperty Name="running_process_detail_id" ColumnName="running_process_detail_id" />
+                <ScalarProperty Name="users_id" ColumnName="users_id" />
+                <ScalarProperty Name="process_role_id" ColumnName="process_role_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Project">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Project">
+              <MappingFragment StoreEntitySet="APMT_Project">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="manager_id" ColumnName="manager_id" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Running_Activity_Detail">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Running_Activity_Detail">
+              <MappingFragment StoreEntitySet="APMT_Running_Activity_Detail">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Activity_Status_id" ColumnName="Activity_Status_id" />
+                <ScalarProperty Name="Running_Step_Detail_id" ColumnName="Running_Step_Detail_id" />
+                <ScalarProperty Name="Member_id" ColumnName="Member_id" />
+                <ScalarProperty Name="Activity_id" ColumnName="Activity_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Running_OutputActivity_refer">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_refer">
+              <MappingFragment StoreEntitySet="APMT_Running_OutputActivity_refer">
+                <ScalarProperty Name="process_id" ColumnName="process_id" />
+                <ScalarProperty Name="Activity_output_Refer_id" ColumnName="Activity_output_Refer_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Running_OutputActivity_text">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_text">
+              <MappingFragment StoreEntitySet="APMT_Running_OutputActivity_text">
+                <ScalarProperty Name="running_activity_detail_id" ColumnName="running_activity_detail_id" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="Timestamps" ColumnName="Timestamps" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Running_OutputActivity_upload">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_upload">
+              <MappingFragment StoreEntitySet="APMT_Running_OutputActivity_upload">
+                <ScalarProperty Name="running_activity_detail_id" ColumnName="running_activity_detail_id" />
+                <ScalarProperty Name="Files_id" ColumnName="Files_id" />
+                <ScalarProperty Name="Timestamps" ColumnName="Timestamps" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Versions" ColumnName="Versions" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Running_Process_Detail">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Running_Process_Detail">
+              <MappingFragment StoreEntitySet="APMT_Running_Process_Detail">
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="targetdate" ColumnName="targetdate" />
+                <ScalarProperty Name="leader_id" ColumnName="leader_id" />
+                <ScalarProperty Name="process_id" ColumnName="process_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Running_Step_Detail">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Running_Step_Detail">
+              <MappingFragment StoreEntitySet="APMT_Running_Step_Detail">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Running_Process_Detail_id" ColumnName="Running_Process_Detail_id" />
+                <ScalarProperty Name="step_id" ColumnName="step_id" />
+                <ScalarProperty Name="TargetDate" ColumnName="TargetDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Running_Step_Input">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Running_Step_Input">
+              <MappingFragment StoreEntitySet="APMT_Running_Step_Input">
+                <ScalarProperty Name="Step_Input_id" ColumnName="Step_Input_id" />
+                <ScalarProperty Name="running_step_detail_id" ColumnName="running_step_detail_id" />
+                <ScalarProperty Name="Files_id" ColumnName="Files_id" />
+                <ScalarProperty Name="Timestamps" ColumnName="Timestamps" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Versions" ColumnName="Versions" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Running_Step_Output">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Running_Step_Output">
+              <MappingFragment StoreEntitySet="APMT_Running_Step_Output">
+                <ScalarProperty Name="Step_Output_id" ColumnName="Step_Output_id" />
+                <ScalarProperty Name="running_step_detail_id" ColumnName="running_step_detail_id" />
+                <ScalarProperty Name="Files_id" ColumnName="Files_id" />
+                <ScalarProperty Name="Timestamps" ColumnName="Timestamps" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Versions" ColumnName="Versions" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Step">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Step">
+              <MappingFragment StoreEntitySet="APMT_Step">
+                <ScalarProperty Name="typess" ColumnName="typess" />
+                <ScalarProperty Name="weights" ColumnName="weights" />
+                <ScalarProperty Name="process_id" ColumnName="process_id" />
+                <ScalarProperty Name="descriptions" ColumnName="descriptions" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Step_Input">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Step_Input">
+              <MappingFragment StoreEntitySet="APMT_Step_Input">
+                <ScalarProperty Name="Step_id" ColumnName="Step_id" />
+                <ScalarProperty Name="Files_id" ColumnName="Files_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Step_Output">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Step_Output">
+              <MappingFragment StoreEntitySet="APMT_Step_Output">
+                <ScalarProperty Name="Step_id" ColumnName="Step_id" />
+                <ScalarProperty Name="Files_id" ColumnName="Files_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Step_Role">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Step_Role">
+              <MappingFragment StoreEntitySet="APMT_Step_Role">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="step_id" ColumnName="step_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Step_To_Step">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Step_To_Step">
+              <MappingFragment StoreEntitySet="APMT_Step_To_Step">
+                <ScalarProperty Name="toStep_id" ColumnName="toStep_id" />
+                <ScalarProperty Name="fromStep_id" ColumnName="fromStep_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Timeline">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Timeline">
+              <MappingFragment StoreEntitySet="APMT_Timeline">
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Running_Process_Detail_id" ColumnName="Running_Process_Detail_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Type_Output">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Type_Output">
+              <MappingFragment StoreEntitySet="APMT_Type_Output">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_User_Company">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_User_Company">
+              <MappingFragment StoreEntitySet="APMT_User_Company">
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="users_id" ColumnName="users_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APMT_Users">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.APMT_Users">
+              <MappingFragment StoreEntitySet="APMT_Users">
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+                <ScalarProperty Name="Statuss" ColumnName="Statuss" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Passwords" ColumnName="Passwords" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company_Role">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.Company_Role">
+              <MappingFragment StoreEntitySet="Company_Role">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DoT_APMT_DatabaseModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

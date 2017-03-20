@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c474ed858055480db1eec22a270b607f" Name="Diagram1">
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Activity" Width="1.5" PointX="12.75" PointY="33.375" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Activity_Status" Width="1.5" PointX="15.75" PointY="23.875" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Comment" Width="1.5" PointX="20.25" PointY="26.5" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Company" Width="1.5" PointX="3" PointY="24.75" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Company_Member" Width="1.5" PointX="5.25" PointY="20.875" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Files" Width="1.5" PointX="7.5" PointY="31.75" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Process" Width="1.5" PointX="5.25" PointY="29.875" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Process_Role" Width="1.5" PointX="3" PointY="17" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_ProcessRoleUser_Detail" Width="1.5" PointX="5.25" PointY="17.875" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Project" Width="1.5" PointX="8.25" PointY="20.625" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Running_Activity_Detail" Width="1.5" PointX="18" PointY="27" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_refer" Width="1.5" PointX="15" PointY="39.625" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_text" Width="1.5" PointX="20.25" PointY="29" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Running_OutputActivity_upload" Width="1.5" PointX="20.25" PointY="31.75" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Running_Process_Detail" Width="1.5" PointX="10.5" PointY="20.625" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Running_Step_Detail" Width="1.5" PointX="12.75" PointY="23.875" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Running_Step_Input" Width="1.5" PointX="15" PointY="31.125" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Running_Step_Output" Width="1.5" PointX="15" PointY="26.625" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Step" Width="1.5" PointX="7.5" PointY="27.5" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Step_Input" Width="1.5" PointX="12.75" PointY="30.25" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Step_Output" Width="1.5" PointX="12.75" PointY="27.25" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Step_Role" Width="1.5" PointX="9.75" PointY="28.25" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Step_To_Step" Width="1.5" PointX="9.75" PointY="31" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Timeline" Width="1.5" PointX="12.75" PointY="21" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Type_Output" Width="1.5" PointX="10.5" PointY="34.375" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_User_Company" Width="1.5" PointX="5.25" PointY="25" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.APMT_Users" Width="1.5" PointX="3" PointY="20.125" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.Company_Role" Width="1.5" PointX="0.75" PointY="21.125" />
+        <EntityTypeShape EntityType="DoT_APMT_DatabaseModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Activity_Files" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Activity_Step" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Activity_Type_Output" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Activity" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_refer_Activity" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Activity_Status" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Comment_Running_Activity_Detail" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Company_Admin_Company" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Project_Company" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_User_Company_Company" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Company_Admin_Users" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Files_Process" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_upload_Files" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Files" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Files" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Step_Input_Files" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Step_Output_Files" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_APMT_Process_APMT_Users" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Step_Process" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_ProcessRoleUser_Detail_Process_Role" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Step_Role_Process_Role" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_ProcessRoleUser_Detail_Users" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_APMT_Running_Process_Detail_APMT_Project" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Project_Users" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_Activity_Detail_Users" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_text_Running_Activity_Detail" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_OutputActivity_upload_Running_Activity_Detail" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_APMT_Running_Process_Detail_APMT_Users" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Timeline_Running_Process_Detail" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Running_Step_Detail" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Running_Step_Detail" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_Step_Input_Step_Input" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Running_Step_Output_Step_Output" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Step_Input_Step" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Step_Output_Step" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Step_Role_Step" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Step_To_Step_Step" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_Step_To_Step_Step1" />
+        <AssociationConnector Association="DoT_APMT_DatabaseModel.FK_APMT_Users_Company_Role" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
