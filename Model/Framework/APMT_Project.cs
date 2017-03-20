@@ -8,33 +8,21 @@ namespace Model.Framework
 
     public partial class APMT_Project
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public APMT_Project()
-        {
-            APMT_Running_Process_Detail = new HashSet<APMT_Running_Process_Detail>();
-        }
+        public int ID { get; set; }
 
-        public int id { get; set; }
-
-        [Required]
         [StringLength(200)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string Descriptions { get; set; }
+        public string Description { get; set; }
 
-        public int manager_id { get; set; }
+        public int? Manager_Id { get; set; }
 
-        public int company_id { get; set; }
+        public int? Company_Id { get; set; }
 
-        [Required]
-        [StringLength(200)]
-        public string status { get; set; }
+        public bool? Allowed { get; set; }
 
         public virtual APMT_Company APMT_Company { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<APMT_Running_Process_Detail> APMT_Running_Process_Detail { get; set; }
-
-        public virtual APMT_Users APMT_Users { get; set; }
+        public virtual APMT_Company_User APMT_Company_User { get; set; }
     }
 }

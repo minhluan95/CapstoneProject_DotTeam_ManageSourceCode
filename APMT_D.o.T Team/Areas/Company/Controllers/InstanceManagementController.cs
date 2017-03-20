@@ -1,5 +1,4 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,11 +10,11 @@ namespace APMT_D.o.T_Team.Areas.Company.Controllers
     public class InstanceManagementController : Controller
     {
         // GET: Company/InstanceManagement
-        public ActionResult Index()
+        public ActionResult ListActivity_Popup()
         {
             return View();
         }
-        public ActionResult Index2()
+        public ActionResult ListActivity_Toogle()
         {
             return View();
         }

@@ -482,9 +482,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\header-bg.jpg" />
-    <Content Include="Images\req-analysis.jpg" />
-    <Content Include="Images\req-process.jpg" />
-    <Content Include="Images\waterfall_software_Process.png" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -718,13 +715,19 @@
     <Content Include="Areas\Company\Views\Shared\Partial\_Client_HeaderPartial.cshtml" />
     <Content Include="Areas\Company\Views\Shared\_ClientLayoutPage.cshtml" />
     <Content Include="Areas\Company\Views\Shared\_RegisterClientLayout.cshtml" />
-    <Content Include="Areas\Company\Views\InstanceManagement\Index.cshtml" />
-    <Content Include="Areas\Company\Views\InstanceManagement\Index2.cshtml" />
+    <Content Include="Areas\Company\Views\InstanceManagement\ListActivity_Popup.cshtml" />
+    <Content Include="Areas\Company\Views\InstanceManagement\ListActivity_Toogle.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Home\Signin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{243c5810-feb8-462c-bac1-65d0caf14d8e}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

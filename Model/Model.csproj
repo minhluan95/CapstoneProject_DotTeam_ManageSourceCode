@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B4288B76-F0ED-4EDB-967F-EAE5C9F3A81B}</ProjectGuid>
+    <ProjectGuid>{243C5810-FEB8-462C-BAC1-65D0CAF14D8E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Model</RootNamespace>
     <AssemblyName>Model</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -52,37 +52,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\APMTDbContext.cs" />
+    <Compile Include="Framework\APMT_Action.cs" />
     <Compile Include="Framework\APMT_Activity.cs" />
-    <Compile Include="Framework\APMT_Activity_Status.cs" />
-    <Compile Include="Framework\APMT_Comment.cs" />
     <Compile Include="Framework\APMT_Company.cs" />
-    <Compile Include="Framework\APMT_Company_Member.cs" />
-    <Compile Include="Framework\APMT_Files.cs" />
+    <Compile Include="Framework\APMT_Company_User.cs" />
+    <Compile Include="Framework\APMT_Controller.cs" />
+    <Compile Include="Framework\APMT_Language.cs" />
+    <Compile Include="Framework\APMT_Permission.cs" />
     <Compile Include="Framework\APMT_Process.cs" />
-    <Compile Include="Framework\APMT_ProcessRoleUser_Detail.cs" />
     <Compile Include="Framework\APMT_Process_Role.cs" />
+    <Compile Include="Framework\APMT_ProductAdmin.cs" />
     <Compile Include="Framework\APMT_Project.cs" />
-    <Compile Include="Framework\APMT_Running_Activity_Detail.cs" />
-    <Compile Include="Framework\APMT_Running_OutputActivity_refer.cs" />
-    <Compile Include="Framework\APMT_Running_OutputActivity_text.cs" />
-    <Compile Include="Framework\APMT_Running_OutputActivity_upload.cs" />
-    <Compile Include="Framework\APMT_Running_Process_Detail.cs" />
-    <Compile Include="Framework\APMT_Running_Step_Detail.cs" />
-    <Compile Include="Framework\APMT_Running_Step_Input.cs" />
-    <Compile Include="Framework\APMT_Running_Step_Output.cs" />
-    <Compile Include="Framework\APMT_Step.cs" />
-    <Compile Include="Framework\APMT_Step_Input.cs" />
-    <Compile Include="Framework\APMT_Step_Output.cs" />
-    <Compile Include="Framework\APMT_Step_Role.cs" />
-    <Compile Include="Framework\APMT_Step_To_Step.cs" />
-    <Compile Include="Framework\APMT_Timeline.cs" />
-    <Compile Include="Framework\APMT_Type_Output.cs" />
-    <Compile Include="Framework\APMT_Users.cs" />
-    <Compile Include="Framework\APMT_User_Company.cs" />
-    <Compile Include="Framework\Company_Role.cs" />
-    <Compile Include="Framework\sysdiagram.cs" />
+    <Compile Include="Framework\APMT_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

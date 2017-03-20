@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Model;
 using System.Net;
-using Model.Framework;
 using APMT_D.o.T_Team.Areas.Company.Models;
 
 namespace APMT_D.o.T_Team.Areas.Company.Controllers
@@ -13,8 +11,8 @@ namespace APMT_D.o.T_Team.Areas.Company.Controllers
     public class ProcessManagementController : Controller
     {
         // GET: Company/ManageProcess
-        APMTDbContext db = new APMTDbContext();
-        [HttpGet]
+        //APMTDbContext db = new APMTDbContext();
+        //[HttpGet]
         public ActionResult ListProcess(int? id)
         {
             //if (id == null)

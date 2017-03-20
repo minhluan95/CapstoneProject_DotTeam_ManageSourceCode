@@ -6,14 +6,14 @@ namespace Model.Framework
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class APMT_User_Company
+    public partial class APMT_Language
     {
-        public int id { get; set; }
+        [StringLength(2)]
+        public string ID { get; set; }
 
-        public int users_id { get; set; }
+        [StringLength(50)]
+        public string Name { get; set; }
 
-        public int company_id { get; set; }
-
-        public virtual APMT_Company APMT_Company { get; set; }
+        public bool IsDefault { get; set; }
     }
 }

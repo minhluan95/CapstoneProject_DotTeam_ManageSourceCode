@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Model.Framework;
 using System.Net;
 using APMT_D.o.T_Team.Areas.Company.Models;
 
@@ -12,7 +11,7 @@ namespace APMT_D.o.T_Team.Areas.Company.Controllers
     public class ProjectManagementController : Controller
     {
         // GET: Company/ManageProject
-        APMTDbContext db = new APMTDbContext();
+        //APMTDbContext db = new APMTDbContext();
         public ActionResult View_List()
         {
            // ViewBag.LstProject = db.APMT_Project.OrderByDescending(x => x.id).ToList();
