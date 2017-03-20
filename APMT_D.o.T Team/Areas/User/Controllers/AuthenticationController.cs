@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Model;
 using APMT_D.o.T_Team.Areas.User.Code;
 
 namespace APMT_D.o.T_Team.Areas.User.Controllers
@@ -17,22 +16,20 @@ namespace APMT_D.o.T_Team.Areas.User.Controllers
         {
             return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Log_In(LoginModel model)
-        {
-            var result = new UserModel().Login(model.Email, model.Password);
-            if(result && ModelState.IsValid)
-            {
-                SessionHelper.SetSession(new UserSession() {Email =model.Email });
-                return RedirectToAction("View_List", "ProductAdministratorManagement",new {area="System" });
-            }
-            else
-            {
-                ModelState.AddModelError("", "The email or password is incorrect.");
-            }
-            return View(model);
-        }
+        //public ActionResult Log_In(LoginModel model)
+        //{
+        //    var result = new UserModel().Login(model.Email, model.Password);
+        //    if(result && ModelState.IsValid)
+        //    {
+        //        SessionHelper.SetSession(new UserSession() {Email =model.Email });
+        //        return RedirectToAction("View_List", "ProductAdministratorManagement",new {area="System" });
+        //    }
+        //    else
+        //    {
+        //        ModelState.AddModelError("", "The email or password is incorrect.");
+        //    }
+        //    return View(model);
+        //}
         public ActionResult Register()
         {
             return View();
