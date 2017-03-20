@@ -482,6 +482,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\header-bg.jpg" />
+    <Content Include="Images\req-analysis.jpg" />
+    <Content Include="Images\req-process.jpg" />
+    <Content Include="Images\waterfall_software_Process.png" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
